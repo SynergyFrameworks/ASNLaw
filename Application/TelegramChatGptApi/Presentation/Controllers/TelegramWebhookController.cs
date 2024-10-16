@@ -1,125 +1,78 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Telegram.BotAPI.GettingUpdates;
+using System.Threading.Tasks;
+using MongoDB.Driver;
+using MongoDB.Bson;
 using TelegramChatGptApi.Application.Interfaces;
+using TelegramBotApi.Application.DTOs;
 
-namespace TelegramWebhookApi.Controllers
+namespace TelegramChatGptApi.Presentation.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/telegram-webhook")]
     public class TelegramWebhookController : ControllerBase
     {
         private readonly IChatGptService _chatGptService;
         private readonly ITelegramService _telegramService;
+        private readonly IMongoDatabase _database;
 
-        public TelegramWebhookController(IChatGptService chatGptService, ITelegramService telegramBotService)
+        public TelegramWebhookController(
+            IChatGptService chatGptService,
+            ITelegramService telegramService,
+            IMongoClient mongoClient)
         {
             _chatGptService = chatGptService;
-            _telegramService = telegramBotService;
+            _telegramService = telegramService;
+            _database = mongoClient.GetDatabase("TelegramBotDB");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Update update)
+        public async Task<IActionResult> HandleUpdate([FromBody] TelegramMessage update)
         {
-            // Check if the update contains a message
-            if (update.Message != null)
+            if (string.IsNullOrEmpty(update.Text) && string.IsNullOrEmpty(update.MediaUrl))
             {
-                var messageText = update.Message.Text;
-                var chatId = update.Message.Chat.Id;
-                string chatIdString = chatId.ToString();
-                // Forward message to ChatGPT
-                var chatGptResponse = await _chatGptService.GetChatGptResponseAsync(messageText);
-
-                // Send response back to Telegram chat
-                // Send response back to Telegram chat
-                await _telegramService.SendMessageAsync(chatIdString, chatGptResponse);
+                return Ok();
             }
 
-            // Always respond with 200 OK to confirm receipt of update
+            if (!string.IsNullOrEmpty(update.MediaUrl) && update.MediaType == "document")
+            {
+                await HandleDocumentUpload(update);
+            }
+            else if (!string.IsNullOrEmpty(update.Text))
+            {
+                await HandleQuestion(update);
+            }
+
             return Ok();
         }
 
-
-        [HttpPost]
-        public async Task<IActionResult> PostFile([FromBody] Update update)
+        private async Task HandleDocumentUpload(TelegramMessage message)
         {
-            // Handle text messages
-            if (update.Message != null)
+            // Assuming the MediaUrl is the file ID for documents
+            var fileId = message.MediaUrl;
+            var filePath = await _telegramService.DownloadFileAsync(fileId);
+
+            // TODO: Implement document parsing logic here
+            var parsedContent = "Placeholder for parsed content";
+
+            // Insert into MongoDB
+            var collection = _database.GetCollection<BsonDocument>("documents");
+            var document = new BsonDocument
             {
-                var chatId = update.Message.Chat.Id;
-                string chatIdString = chatId.ToString();
-                // Check if the message contains a document
-                if (update.Message.Document != null)
-                {
-                    var fileId = update.Message.Document.FileId;
+                { "ChatId", message.ChatId },
+                { "FileName", Path.GetFileName(filePath) },
+                { "Content", parsedContent }
+            };
+            await collection.InsertOneAsync(document);
 
-                    // Download the file from Telegram
-                    var filePath = await _telegramService.DownloadFileAsync(fileId);
+            await _telegramService.SendMessageAsync(message.ChatId, "Document received and processed.");
+        }
 
-                    // Optionally, process the file (e.g., OCR, analyze the content) using ChatGPT or another service
+        private async Task HandleQuestion(TelegramMessage message)
+        {
+            var chatGptResponse = await _chatGptService.GetChatGptResponseAsync(message.Text);
 
-                    // Send the file back to the user (or send a response from ChatGPT)
-                    await _telegramService.SendDocumentAsync(chatIdString, filePath, update.Message.Document.FileName);
-                }
-                else if (!string.IsNullOrEmpty(update.Message.Text))
-                {
-                    // Forward the text to ChatGPT
-                    var chatGptResponse = await _chatGptService.GetChatGptResponseAsync(update.Message.Text);
-
-                    // Send response back to Telegram chat
-                    await _telegramService.SendDocumentAsync(chatIdString, chatGptResponse);
-                }
-            }
-
-            return Ok();
+            // chatGptResponse is already a string, so we can use it directly
+            await _telegramService.SendMessageAsync(message.ChatId, chatGptResponse);
         }
     }
 }
-
-
-
-
-//using Microsoft.AspNetCore.Mvc;
-//using Newtonsoft.Json;
-//using TelegramChatGptBot.Domain.Entities;
-
-//namespace TelegramWebhookApi.Controllers
-//{
-//    [ApiController]
-//    [Route("api/[controller]")]
-//    public class TelegramWebhookController : ControllerBase
-//    {
-//        [HttpPost]
-//        public IActionResult Post([FromBody] object update)
-//        {
-//            // Deserialize the incoming update (received as JSON)
-//            var jsonUpdate = JsonConvert.DeserializeObject(update.ToString());
-
-//            // Process the update (For example, log or handle messages)
-//            Console.WriteLine(jsonUpdate);
-
-//            // Respond to Telegram (must be 200 OK, else Telegram will retry)
-//            return Ok();
-//        }
-
-//        //public IActionResult Post([FromBody] object update)
-//        //{
-//        //    var jsonUpdate = JsonConvert.DeserializeObject<TelegramUpdate>(update.ToString());
-
-//        //    if (jsonUpdate.Message != null)
-//        //    {
-//        //        var chatId = jsonUpdate.Message.Chat.Id;
-//        //        var messageText = jsonUpdate.Message.Text;
-
-//        //        // Process the message here
-//        //        Console.WriteLine($"Message received: {messageText}");
-//        //    }
-
-//        //    return Ok();
-//        //}
-
-
-
-//    }
-//}
-////var telegramService = new TelegramWebhookService();
-////await telegramService.SetWebhookAsync("https://your-public-url/api/TelegramWebhook");
