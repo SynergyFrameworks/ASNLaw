@@ -1,0 +1,80 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using MudBlazor
+@using System.Reflection
+@using System.Net.Http.Json
+
+<Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(Client._Imports).Assembly }">
+    <Found Context="routeData">
+        <AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)">
+            <NotAuthorized>
+                <RedirectToLogin />
+            </NotAuthorized>
+        </AuthorizeRouteView>
+        <FocusOnNavigate RouteData="routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>Not found</PageTitle>
+        <LayoutView Layout="typeof(Layout.MainLayout)">
+            <MudText Typo="Typo.h4" GutterBottom="true">Sorry, there's nothing at this address.</MudText>
+        </LayoutView>
+    </NotFound>
+</Router>
+<ErrorBoundary>
+    <ErrorContent>
+        @HandleErrorContent
+    </ErrorContent>
+</ErrorBoundary>
+
+@code {
+    [Inject] private HttpClient Http { get; set; }
+    [Inject] private NavigationManager NavigationManager { get; set; }
+
+    private RenderFragment HandleErrorContent(Exception exception) => builder =>
+    {
+        var errorPageType = Assembly.GetExecutingAssembly().GetType("LawUI.Components.Pages.Error");
+        if (errorPageType != null)
+        {
+            if (exception is HttpRequestException httpException)
+            {
+                try
+                {
+                    var errorResponse = Http.GetFromJsonAsync<ErrorResponse>(httpException.Message).Result;
+                    if (errorResponse != null)
+                    {
+                        var encodedErrorDetails = System.Web.HttpUtility.UrlEncode($"{errorResponse.Title}: {errorResponse.Message}");
+                        NavigationManager.NavigateTo($"/Error?message={encodedErrorDetails}&requestId={errorResponse.RequestId}", forceLoad: true);
+                        return;
+                    }
+                }
+                catch
+                {
+                    // If deserialization fails, fall through to default error page
+                }
+            }
+
+            // Default error handling
+            var encodedErrorMessage = System.Web.HttpUtility.UrlEncode(exception.Message);
+            NavigationManager.NavigateTo($"/Error?message={encodedErrorMessage}", forceLoad: true);
+        }
+        else
+        {
+            // Fallback if Error page is not found
+            builder.OpenComponent<MudAlert>(0);
+            builder.AddAttribute(1, "Severity", Severity.Error);
+            builder.AddAttribute(2, "ChildContent", (RenderFragment)((builder2) => 
+            {
+                builder2.AddContent(3, "An unexpected error has occurred.");
+            }));
+            builder.CloseComponent();
+        }
+    };
+
+    private class ErrorResponse
+    {
+        public int StatusCode { get; set; }
+        public string Title { get; set; }
+        public string Message { get; set; }
+        public string RequestId { get; set; }
+    }
+}

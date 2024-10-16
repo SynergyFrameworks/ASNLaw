@@ -1,0 +1,111 @@
+﻿@page "/Error"
+@using System.Diagnostics
+@using Microsoft.Extensions.Logging
+@inject ILogger<Error> Logger
+@inject NavigationManager NavigationManager
+
+<PageTitle>Error</PageTitle>
+<MudContainer MaxWidth="MaxWidth.Small" Class="mt-16">
+    <MudCard>
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudText Typo="Typo.h5" Color="Color.Error">@ErrorTitle</MudText>
+            </CardHeaderContent>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudText>@ErrorMessage</MudText>
+            @if (ShowRequestId)
+            {
+                <MudText Class="mt-4">
+                    <strong>Request ID:</strong> <code>@RequestId</code>
+                </MudText>
+            }
+            @if (StatusCode.HasValue)
+            {
+                <MudText Class="mt-2">
+                    <strong>Status Code:</strong> @StatusCode
+                </MudText>
+            }
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@NavigateToHome">Return to Home</MudButton>
+        </MudCardActions>
+    </MudCard>
+    @if (_showDetails)
+    {
+        <MudExpansionPanels Class="mt-6">
+            <MudExpansionPanel Text="Technical Details">
+                <MudText Typo="Typo.body2">
+                    @_errorDetails
+                </MudText>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+    }
+</MudContainer>
+
+@code {
+    [CascadingParameter]
+    private HttpContext HttpContext { get; set; }
+    
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "message")]
+    public string ErrorMessage { get; set; }
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "statusCode")]
+    public int? StatusCode { get; set; }
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "requestId")]
+    public string RequestId { get; set; }
+
+    private bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    private bool _showDetails = false;
+    private string _errorDetails;
+    private string ErrorTitle { get; set; } = "An error occurred";
+
+    protected override void OnInitialized()
+    {
+        if (string.IsNullOrEmpty(RequestId))
+        {
+            RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
+        }
+
+        // Parse the error message
+        if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            var decodedMessage = System.Web.HttpUtility.UrlDecode(ErrorMessage);
+            var errorParts = decodedMessage.Split(new[] { ": " }, 2, StringSplitOptions.RemoveEmptyEntries);
+            
+            if (errorParts.Length > 1)
+            {
+                ErrorTitle = errorParts[0];
+                ErrorMessage = errorParts[1];
+            }
+            else
+            {
+                ErrorMessage = decodedMessage;
+            }
+        }
+        else
+        {
+            ErrorMessage = "We apologize for the inconvenience. The error has been logged and we'll look into it.";
+        }
+
+        // Log the error
+        Logger.LogError("An error occurred. Error Title: {ErrorTitle}, Error Message: {ErrorMessage}, Request ID: {RequestId}, Status Code: {StatusCode}", 
+                        ErrorTitle, ErrorMessage, RequestId, StatusCode);
+
+        // In development mode, show more details
+        if (HttpContext?.RequestServices.GetService<IWebHostEnvironment>()?.IsDevelopment() == true)
+        {
+            _showDetails = true;
+            _errorDetails = ErrorMessage;
+        }
+    }
+
+    private void NavigateToHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

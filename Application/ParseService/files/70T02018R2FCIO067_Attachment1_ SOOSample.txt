@@ -1,0 +1,80 @@
+A. Ensure that an automated testing suite is provided to support an Agile Delivery Methodology in the Pre-Production environments. This support will focus on those items prioritized in the Automated Test backlog. Examples of activities captured in the backlog include the following: 
+a. Continue automation of existing manual regression tests 
+b. Identify new regression tests that do not exist today to be automated (required for all TIMNG features) 
+c. Maintain existing automated test cases 
+d. Provide enhanced logging 
+e. Automate the execution of tests 
+f. Manage SOP updates 
+g. The list of core applications/appliances used include: Selenium as the Open Source Test Automation Framework. 
+B. Ensure the approved Change / Release Management SOP is maintained in order to perform manage changes from Inception to Elaboration to Construction phases, to include the following: 
+a. Support of the inception process which defines the scope, schedule, and estimated effort or cost by: 
+i. Define and analyze business requirements and / or open rational tickets, per approved work request. 
+ii. Provide a solution with alternatives and risks 
+iii. Document the operational impact assessment with a level of effort 
+iv. Draft a notional release plan 
+v. Support government approval process to start the elaboration process. 
+b. Support the elaboration process which defines design and test plan of the solution by: 
+ i. Break down changes in work packages for development 
+ ii. Draft system requirements, per approved work request. iii. Draft test plans 
+iv. Support the system requirement reviews and locking scope 
+v. Elaborate the system design 
+vi. Support the critical design review and governance approval to start the Construction Process. 
+c. Support the construction which includes the development, integration, and testing of the change by: 
+i. Developing changes to the assigned components 
+ii. Conducting functional testing preparations 
+iii. Defining, coordinating, and executing of deployment plan iv. Validate all deployment and fallback steps 
+v. Executing defined functional and integration, per approved work request 
+vi. Executing defined operational tests 
+vii. Supporting formal / user testing 
+viii. Supporting the governance process for approval to start the transition process to deploy the change to production. 
+C. Ensure the approved Configuration Management SOP [D17, Table 1] is maintained in order to manage changes to custom code, scripts, and configurations, as follows: 
+a. Maintain a Rational Library Management to identify TIM custom applications to include full application name and related COTS products. 
+b. Maintain and build deployment process to ensure baseline management in each of the assigned environments. 
+c. Maintain an Operational/Build Calendar shows the environment usage, migration schedule and baseline deployed with the related Remedy Change Request. 
+d. Development and tracking of release naming convention and versioning to easily identify the baseline. 
+D. Ensure status account reports and Product Baselines are maintained and provided [D21, Table 1] for: 
+a. CI Code Version numbers 
+b. Rational tickets included in Release, introduced with the release 
+c. Release Version Numbers throughout the System Development Life Cycle (SDLC) 
+E. Ensure release and configuration management in all environments including 24x7x365 support for the TIM Production System Environment. This support will include the following activities: 
+a. Coordinate and Collaborate release approvals with Mission Assurance through OCCB approvals 
+b. Facilitate Mission Assurance deployment of non-Siebel releases into 
+Pre-Production and Production 
+c. Work with Siebel application team to deploy Siebel releases into all environments 
+d. Deploy code in lower environments 
+e. Communicate environment status and release information to key stakeholders 
+f. Develop Overall Operational/Build Calendar [D20, Table 1] including coordination with the development team for releases as well as operational maintenance tasks (patching, POAM remediation, etc.) 
+g. Track application configuration in all environments 
+h. SOP updates 
+i. The list of core applications/appliances in use are: 
+i. Rational (Provided and managed by the Government) 
+ii. Build Forge (Provided and managed by the Government) 
+F. Ensure the O&M Pipeline Report [D19, Table 1] is maintained to include: 
+a. Open Remedy Production Change Requests (CR) and their current status, planned release date. 
+b. Closed Remedy Production Change Requests (CR) planned and actual release date. 
+c. Planned O&M elaborations projects with planned dates for governance reviews and scope. 
+G. Ensure the Change/Release Management metrics are collected and reported [D18, Table 1]. 
+1.1 SYSTEMS ENGINEERING, ARCHITECTURE, AND TECHNICAL ANALYSIS 
+Provide technical and architectural support to the Credentialing large solution working group to develop and review solution alternatives, plan and manage architecture runway. Maintain technical quality of delivery and assist with developing/maintaining Credentialing technical roadmap [D23, Table1].  This will allow the TIM Program to develop an operational environment that meets the TSA’s mission. See TIM “To-Be” Operational Model posted in the VRR. 
+1.2 SYSTEMS INTEGRATION AND TECHNICAL COLLABORATION 
+Provide system integration and test activities across the TIM Program to successfully achieve suitability and effectiveness for each release to operation. Technical collaboration with other programs and partners may include: environment configuration, System Integration, System and Solution Demos, End to End and Solution Performance Testing and Release deployments. Create and maintain infrastructure, including continuous integration, automated builds, and automated build verification testing based on an Economic Framework [D24, D25, Table1]. 
+1.3 IMPLEMENTATION 
+Prepare the system, environment, organizations and end users for the deployment of the TIM system.  Provide information to the Operational Test Agent (OTA) in support of interoperability validation to evaluate operational effectiveness, suitability, and cyberreadiness of the TIM system as stated in the Operational Requirements Document (ORD) and the TEMP. Support the Government’s ongoing Continuity of Operations 
+(COOP)/Disaster Recovery (DR) planning efforts to identify and document the strategy, technical approach, processes and procedures for recovery of the TIM System in the event of a disaster.  Provide support with the implementation of the COOP/DR strategy once approved by the Government. 
+1.4 TRANSITION  
+1.4.1 Transition In 
+The Offeror shall provide in its proposal Transition-In Plan that addresses the following: 
+A. How services will be transitioned from the current service provider addressing the general issues, risks, timetables and levels of resource commitments required for a successful transition.   
+B. The technical, administrative, and financial aspects for assuring a smooth, seamless, and transparent continuity of operations.  
+C. The priorities and timelines for the transitioning of specific services based on a logical sequence of service implementation. 
+D. Identify transition risks, describe mitigation strategies, and describe how these risks as well as new risks identified during transition will be managed. 
+E. Describe transition communication plan identifying methods and types of communication to key stakeholders. 
+ 
+F. Develop and implement detailed transition strategies and processes needed to maintain continuity of operations and quality of service during the transition-in period.  
+G. Implement and manage the activities necessary to transition service from the existing service provider(s) with no breaks in current service levels and no delays in support for new and ongoing projects. 
+H. The Transition- In Plan shall include the schedule and milestones that indicate how the Contractor plans to migrate all existing services from the current provider(s), add new services, while minimizing operational and project impacts.  The Transition-In Plan shall include project start up and staffing ramp up approach, a mobilization schedule, and a schedule of critical events and milestones that are to commence upon award.  The Transition Plan shall include the plans for migrating assets, data, and services. The Contractor shall incorporate termination dates of existing Contractor performance periods and TSA/DHS planned major project dates. For planning purposes, the overall transition period shall not exceed 6 months. Transition of operational capabilities is to be completed within 120 calendar days. 
+I. Ensure that all necessary personnel actions, appropriate training (including any required certifications), and domain knowledge transfer are accomplished in accordance with the accepted Transition Plan. The Contractor shall also address non-personnel considerations, such as materials and supplies, equipment, facilities, sub-contracts, leases, environmental issues, safety and security, etc. in the implementation of the Transition Plan. 
+1.4.2 Transition Out 
+A. Develop a Transition Out Plan [D15, Table1] that describes a transition-out strategy, and identifies transition data and information, records, systems, software licenses and ownership, government furnished equipment/information/property, components, documentation, functionality, services, service dependencies, services interfaces, risks, transition work activities, schedule, staffing down approach, knowledge transfer, and any other information that needs to be considered to ensure a smooth transition.  
+B. Deliver the Transition Out Plan within 90 business days of Task Order end. 
+a. , troubleshooting, updates 

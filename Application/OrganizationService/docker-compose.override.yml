@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  organizationservice:
+    environment:
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=ScionDev
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/scionapp.pfx
+    ports:
+      - "44390:443"
+    volumes:
+      - ~/ASP.NET/Https:/root/.aspnet/https:ro
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro

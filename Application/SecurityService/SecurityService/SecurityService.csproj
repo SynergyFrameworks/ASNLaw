@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>aspnet-SecurityService-4537D484-7914-4498-9A46-E35276B7AB94</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..\Scion.Infrastructure</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Certificates\" />
+    <Folder Include="Diagnostics\" />
+    <Folder Include="Licensing\" />
+    <Folder Include="Model\Diagnostics\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Scion.Hangfire.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.2.3" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.17.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.17.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" Version="2.17.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson" Version="5.0.7" />
+    <PackageReference Include="Microsoft.Azure.SignalR" Version="1.9.0" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="OpenIddict.AspNetCore" Version="3.0.5" />
+    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="3.0.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.1.4" />
+    <PackageReference Include="System.Linq.Async" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Scion.Business\Scion.Business.Security\Scion.Business.Security.csproj" />
+    <ProjectReference Include="..\..\..\Scion.DistributedLock\Scion.DistributedLock.csproj" />
+    <ProjectReference Include="..\..\..\Scion.Hangfire\Scion.Hangfire.csproj" />
+    <ProjectReference Include="..\..\..\Scion.Infrastructure\Scion.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\Scion.Modules\Scion.Modules.csproj" />
+    <ProjectReference Include="..\..\..\Scion.Persistence.Common\Scion.Data.Common.csproj" />
+  </ItemGroup>
+
+</Project>

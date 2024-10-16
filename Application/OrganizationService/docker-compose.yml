@@ -1,0 +1,23 @@
+version: '3.4'
+
+networks:
+  default:
+    external:
+      name: network-microservice
+
+services:
+  organizationservice:
+    image: ${DOCKER_REGISTRY-}organizationservice
+    container_name: "organizationservice"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Docker"
+      ASPNETCORE_URLS: "https://+;http://+:"
+      ASPNETCORE_HTTPS:PORT: "44390"
+    ports:
+    - "44390:443"
+    volumes:
+    - ~/.aspnet/https:/https:ro

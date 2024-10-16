@@ -1,0 +1,197 @@
+﻿@page "/analyze"
+@rendermode InteractiveAuto
+@using Aspose.Words
+@using LawUI.Domain.Services
+@using System.Text.RegularExpressions
+@using MongoDB.Bson
+
+@inject ILogger<Documents> Logger
+@inject IHttpClientFactory ClientFactory
+@inject ISnackbar Snackbar
+@inject MongoDbService MongoDbService
+@inject IDocumentCacheService DocumentCache
+@inject IJSRuntime JS
+
+<PageTitle>Analyze Document</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Document Upload</MudText>
+<MudText Class="mb-8">Upload Document to Analyze</MudText>
+
+<MudForm Model="@_model" @bind-IsValid="_isValid" @bind-IsTouched="_isTouched">
+    <MudItem xs="12">
+        <MudFileUpload T="IBrowserFile"
+                       @ref="_fileUpload"
+                       @bind-File="_singleFile"
+                       Accept=".docx,.pdf"
+                       Hidden="false"
+                       InputClass="absolute mud-width-full mud-height-full overflow-hidden z-10"
+                       InputStyle="opacity:0"
+                       @ondrop="ClearDragClass"
+                       @ondragenter="SetDragClass"
+                       @ondragleave="ClearDragClass"
+                       @ondragend="ClearDragClass">
+            <ActivatorContent>
+                <MudPaper Height="300px" Outlined="true" Class="@_dragClass">
+                    <MudText Typo="Typo.h6">Drag and drop files here or click</MudText>
+                    @if (_singleFile != null)
+                    {
+                        <MudChip T="string" Color="Color.Dark" Text="@_singleFile.Name" />
+                    }
+                </MudPaper>
+            </ActivatorContent>
+        </MudFileUpload>
+
+        <MudToolBar Gutters="false" Class="relative d-flex justify-end gap-4">
+            <MudButton Color="Color.Primary" Disabled="@(!_isValid || !_isTouched || _singleFile == null)" OnClick="Upload" Variant="Variant.Filled">Upload</MudButton>
+            <MudButton Color="Color.Error" Disabled="(_singleFile == null)" OnClick="ClearAsync" Variant="Variant.Filled">Clear</MudButton>
+        </MudToolBar>
+    </MudItem>
+</MudForm>
+
+@* @if (_extractedPlaceholders.Any())
+{
+    <MudTable Items="_extractedPlaceholders" Hover="true">
+        <HeaderContent>
+            <MudTh>Field</MudTh>
+            <MudTh>Value</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            @{
+                var documentField = context as DocumentField;
+            }
+            <MudTd DataLabel="Field">@documentField.Key</MudTd>
+            <MudTd DataLabel="Value">
+                <MudTextField @bind-Value="documentField.Value" Placeholder="Enter value..." Required="documentField.IsRequired" />
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    <MudButton Color="Color.Primary" OnClick="GenerateNewDocument">Generate New Document</MudButton>
+} *@
+
+@code {
+    private MudFileUpload<IBrowserFile> _fileUpload;
+    private IBrowserFile _singleFile;
+    private bool _isValid;
+    private bool _isTouched;
+    private DocumentModel _model = new DocumentModel();
+    private List<DocumentField> _extractedPlaceholders = new List<DocumentField>();
+    private string _dragClass = "relative rounded-lg border-2 border-dashed pa-4 mt-4 mud-width-full mud-height-full";
+    private string _documentId;
+
+    private async Task Upload()
+    {
+        if (_singleFile != null)
+        {
+            try
+            {
+                using var stream = _singleFile.OpenReadStream();
+                using var memoryStream = new MemoryStream();
+                await stream.CopyToAsync(memoryStream);
+                memoryStream.Position = 0;
+
+                string content = await DocumentCache.GetOrExtractTextAsync(_singleFile.Name);
+
+                // Extract placeholders
+                ExtractPlaceholders(content);
+
+                // Store the document and placeholders in MongoDB
+                _documentId = await SaveDocumentInMongo(content, _extractedPlaceholders);
+
+                Snackbar.Add("Document uploaded and analyzed successfully!", Severity.Success);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "Error processing document");
+                Snackbar.Add("Error processing document. Please try again.", Severity.Error);
+            }
+
+            StateHasChanged();
+        }
+    }
+
+    private void ExtractPlaceholders(string content)
+    {
+        var regex = new Regex(@"\[#(\w+)#\]");
+        var matches = regex.Matches(content);
+
+        _extractedPlaceholders = matches
+            .Select(m => new DocumentField { 
+                Key = m.Value, 
+                Value = string.Empty, 
+                FieldType = "text", 
+                IsRequired = true,
+                Position = m.Index
+            })
+            .ToList();
+    }
+
+    private async Task<string> SaveDocumentInMongo(string content, List<DocumentField> placeholders)
+    {
+        var document = new BsonDocument
+        {
+            { "Content", content },
+            { "Placeholders", new BsonArray(placeholders.Select(p => new BsonDocument { 
+                { "Key", p.Key }, 
+                { "Value", p.Value }, 
+                { "FieldType", p.FieldType }, 
+                { "IsRequired", p.IsRequired },
+                { "Position", p.Position }
+            })) },
+            { "OriginalFileName", _singleFile.Name },
+            { "UploadDate", DateTime.UtcNow }
+        };
+
+        return await MongoDbService.InsertDocumentAsync("Documents", document);
+    }
+
+    private async Task GenerateNewDocument()
+    {
+        if (_documentId != null)
+        {
+            var documentEntry = await MongoDbService.GetDocumentById(_documentId);
+
+            if (documentEntry != null)
+            {
+                var content = documentEntry.Content;
+
+                foreach (var placeholder in _extractedPlaceholders.OrderByDescending(p => p.Position))
+                {
+                    content = content.Remove(placeholder.Position, placeholder.Key.Length)
+                                     .Insert(placeholder.Position, placeholder.Value);
+                }
+
+                await SaveOrDownloadDocument(content);
+                Snackbar.Add("Document generated successfully!", Severity.Success);
+            }
+        }
+    }
+
+    private async Task SaveOrDownloadDocument(string updatedContent)
+    {
+        var fileName = $"Updated_{_singleFile.Name}";
+        var contentType = "application/octet-stream";
+        var bytes = Encoding.UTF8.GetBytes(updatedContent);
+
+        await JS.InvokeVoidAsync("downloadFileFromStream", fileName, contentType, bytes);
+    }
+
+    private async Task ClearAsync()
+    {
+        _singleFile = null;
+        _extractedPlaceholders.Clear();
+        _model.Files = new List<IBrowserFile>();
+        _documentId = null;
+        StateHasChanged();
+    }
+
+    private void SetDragClass()
+    {
+        _dragClass = _dragClass + " mud-border-primary";
+    }
+
+    private void ClearDragClass()
+    {
+        _dragClass = _dragClass.Replace(" mud-border-primary", "");
+    }
+}

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{75B98258-73ED-4D2D-9C33-F6375AD46C42}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WorkgroupMgr</RootNamespace>
+    <AssemblyName>WorkgroupMgr</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonFields.cs" />
+    <Compile Include="DataFunctions.cs" />
+    <Compile Include="DateFunctions.cs" />
+    <Compile Include="DocTypesFields.cs" />
+    <Compile Include="DocTypesMgr.cs" />
+    <Compile Include="Files.cs" />
+    <Compile Include="ListFields.cs" />
+    <Compile Include="ListMgr.cs" />
+    <Compile Include="Matrices.cs" />
+    <Compile Include="MatricesFields.cs" />
+    <Compile Include="MatrixAllocations.cs" />
+    <Compile Include="MatrixAllocationsFields.cs" />
+    <Compile Include="MatrixDocTypes.cs" />
+    <Compile Include="MatrixLists.cs" />
+    <Compile Include="MatrixRefRes.cs" />
+    <Compile Include="MatrixSB.cs" />
+    <Compile Include="MatrixSBFields.cs" />
+    <Compile Include="MatrixSettings.cs" />
+    <Compile Include="MatrixTemplate.cs" />
+    <Compile Include="MatrixTemplateFields.cs" />
+    <Compile Include="ProjectDocsFields.cs" />
+    <Compile Include="Projects.cs" />
+    <Compile Include="RefResFields.cs" />
+    <Compile Include="RefResMgr.cs" />
+    <Compile Include="SBMgr.cs" />
+    <Compile Include="SBTempsFields.cs" />
+    <Compile Include="UserCardMgr.cs" />
+    <Compile Include="WorkgroupCatalogueFields.cs" />
+    <Compile Include="WorkgroupInfoFields.cs" />
+    <Compile Include="Workgroups.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AtebionExpt2Excel\AtebionExpt2Excel\AtebionExpt2Excel.csproj">
+      <Project>{2be2c238-67be-48dd-88f0-e6283d4a68ac}</Project>
+      <Name>AtebionExpt2Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionWordTemplate\AtebionWordTemplate\AtebionWordTemplate\AtebionWordTemplate.csproj">
+      <Project>{c4b628ac-e22e-4620-8eab-f4c1b90944e6}</Project>
+      <Name>AtebionWordTemplate</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

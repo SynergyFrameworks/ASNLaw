@@ -1,0 +1,66 @@
+﻿@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
+@inject IThemeService ThemeService
+
+<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="@ThemeService.GetCurrentTheme()" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudPopoverProvider />
+
+<MudLayout>
+    <MudAppBar Color="Color.Primary" Fixed="false" Dense="@dense" Elevation="@elevation">
+        <MudText Typo="Typo.h5" Class="ml-3">Law UI</MudText>
+        <MudSpacer />
+        <MudSwitch @bind-Value="_isDarkMode" Color="Color.Secondary" Class="ma-4" Label="@($"{(_isDarkMode ? "Dark" : "Light")} Mode")" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent Class="mt-16 pa-4">
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private bool _drawerOpen = true;
+    private bool _isDarkMode;
+    private bool dense = false;
+    private int elevation = 4;
+    private bool _isFirstRender = true;
+
+    protected override void OnInitialized()
+    {
+        ThemeService.ThemeChanged += OnThemeChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_isFirstRender)
+        {
+            _isDarkMode = await JSRuntime.InvokeAsync<bool>("isDarkMode");
+            await ThemeService.SetDarkMode(_isDarkMode);
+            _isFirstRender = false;
+            StateHasChanged();
+        }
+    }
+
+    private void OnThemeChanged(object sender, bool isDarkMode)
+    {
+        _isDarkMode = isDarkMode;
+        StateHasChanged();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (!_isFirstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("setDarkMode", _isDarkMode);
+            await ThemeService.SetDarkMode(_isDarkMode);
+        }
+    }
+
+    public void Dispose()
+    {
+        ThemeService.ThemeChanged -= OnThemeChanged;
+    }
+}

@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FFAC2B71-66E2-4A49-B884-D4ACA82B8736}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atebion.ConceptAnalyzer</RootNamespace>
+    <AssemblyName>Atebion.ConceptAnalyzer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=5.3.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Merit Source\74\ProdBuild3\ProdBuild\ProfessionalDocAnalyzer\Atebion.ConceptAnalyzer\bin\Debug\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=2.3.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.2.3.2.1\lib\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTextSummarizer, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTextSummarizer.1.0.2\lib\OpenTextSummarizer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analysis.cs" />
+    <Compile Include="AnalysisConcepts.cs" />
+    <Compile Include="AnalysisDictionaries.cs" />
+    <Compile Include="AnalysisUCaseFieldConst.cs" />
+    <Compile Include="AppFolders_CA.cs" />
+    <Compile Include="ConceptsDocSum.cs" />
+    <Compile Include="ConceptsResultsFields.cs" />
+    <Compile Include="DictionariesFieldConst.cs" />
+    <Compile Include="DiscreteContentFields.cs" />
+    <Compile Include="DiscreteContentMgr.cs" />
+    <Compile Include="DocsConceptsAnalysisFieldConst.cs" />
+    <Compile Include="DocsDictionariesAnalysisFieldConst.cs" />
+    <Compile Include="Documents.cs" />
+    <Compile Include="ExcelOutput.cs" />
+    <Compile Include="ExcelTemplateFields.cs" />
+    <Compile Include="Indexer.cs" />
+    <Compile Include="NotesEnbedded.cs" />
+    <Compile Include="PageLineFields.cs" />
+    <Compile Include="PageMappingFields.cs" />
+    <Compile Include="ParagraphParseEng.cs" />
+    <Compile Include="ParseResultsFields.cs" />
+    <Compile Include="Projects.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportConceptsDocFields.cs" />
+    <Compile Include="ReportDicDocFields.cs" />
+    <Compile Include="ResponsAssigMatrix.cs" />
+    <Compile Include="ResponsibilityAssMatrixFields.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atebion.Common\Atebion.Common.csproj">
+      <Project>{46ec7776-5256-4c0f-96f4-8899bc9265e2}</Project>
+      <Name>Atebion.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionParse2\AtebionParse.vbproj">
+      <Project>{00d746b6-3155-4eed-a02d-c529561bec30}</Project>
+      <Name>AtebionParse</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionRTFf2HTMLf\AtebionRTFf2HTMLf.csproj">
+      <Project>{72713163-8630-4128-839a-b2e491d503dc}</Project>
+      <Name>AtebionRTFf2HTMLf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionRTF\AtebionRTF.csproj">
+      <Project>{7aeeaa44-6a36-498c-9ab7-c8e758cc6dd4}</Project>
+      <Name>AtebionRTF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atebion_Dictionary\Atebion_Dictionary.csproj">
+      <Project>{e3ee68a6-3d8d-4816-b2ea-e582f3840c7d}</Project>
+      <Name>Atebion_Dictionary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DiscreteContent\DiscreteContent.csproj">
+      <Project>{1e04f668-0dd1-460f-98c8-db6d05c72d93}</Project>
+      <Name>DiscreteContent</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

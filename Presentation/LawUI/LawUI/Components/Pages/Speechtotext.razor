@@ -1,0 +1,141 @@
+﻿@page "/speechtotext"
+@inject SpeechToTextViewModel ViewModel
+@inject IJSRuntime JS
+@inject ISnackbar Snackbar
+@* @inject AuthenticationStateProvider AuthStateProvider *@
+@inject MongoDbService MongoDbService
+
+
+
+
+<MudPaper Class="pa-4">
+    <MudText Typo="Typo.h4" GutterBottom="true">Voice Activated Speech Recognition</MudText>
+    
+    <MudTextField @bind-Value="ViewModel.Model.Transcription" Label="Transcription" Lines="4" />
+    
+    <MudButtonGroup Class="mt-4">
+        <MudButton OnClick="Undo" Variant="Variant.Outlined" Color="Color.Primary">Undo</MudButton>
+        <MudButton OnClick="Redo" Variant="Variant.Outlined" Color="Color.Primary">Redo</MudButton>
+        <MudButton OnClick="StartRecognition" Variant="Variant.Filled" Color="Color.Primary">Start Speech Recognition</MudButton>
+        <MudButton OnClick="StartRecording" Variant="Variant.Filled" Color="Color.Secondary">Start Recording</MudButton>
+        <MudButton OnClick="StopRecording" Variant="Variant.Filled" Color="Color.Error">Stop Recording</MudButton>
+        <MudButton OnClick="PlayRecording" Variant="Variant.Filled" Color="Color.Info">Play Recording</MudButton>
+    </MudButtonGroup>
+
+    <MudText Class="mt-4">Last Transcription: @ViewModel.Model.LastTranscription</MudText>
+
+    <audio id="audioPlayback" controls class="mt-4 d-block"></audio>
+
+@* @if (_previousTranscriptions != null && _previousTranscriptions.Any())
+{
+    <MudText Typo="Typo.h5" Class="mt-6">Previous Transcriptions</MudText>
+    <MudList Items="_previousTranscriptions" Clickable="true">
+        @foreach (var entry in _previousTranscriptions)
+        {
+            <MudListItem T="SpeechToTextEntry">
+                <MudText Typo="Typo.body1">@entry.Transcription</MudText>
+                <MudText Typo="Typo.caption">@entry.Timestamp.ToLocalTime()</MudText>
+            </MudListItem>
+        }
+    </MudList> *@
+}
+</MudPaper>
+
+@code {
+    private List<SpeechToTextEntry> _previousTranscriptions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPreviousTranscriptions();
+    }
+
+    private async Task LoadPreviousTranscriptions()
+    {
+        // var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        // var user = authState.User;
+        // var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        // if (!string.IsNullOrEmpty(userId))
+        // {
+        //     _previousTranscriptions = await MongoDbService.GetSpeechToTextEntriesByUserIdAsync(userId);
+        // }
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var result = await JS.InvokeAsync<bool>("audioInterop.initialize");
+            if (!result)
+            {
+                Snackbar.Add("Failed to initialize audio. Please check your microphone settings.", Severity.Error);
+            }
+        }
+    }
+
+    private async Task StartRecognition()
+    {
+        try
+        {
+            await ViewModel.StartRecognitionAsync();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error during speech recognition: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private void Undo()
+    {
+        ViewModel.Undo();
+    }
+
+    private void Redo()
+    {
+        ViewModel.Redo();
+    }
+
+    private async Task StartRecording()
+    {
+        var result = await JS.InvokeAsync<bool>("audioInterop.startRecording");
+        if (!result)
+        {
+            Snackbar.Add("Failed to start recording. Please try again.", Severity.Warning);
+        }
+    }
+
+    private async Task StopRecording()
+    {
+        var result = await JS.InvokeAsync<bool>("audioInterop.stopRecording");
+        if (!result)
+        {
+            Snackbar.Add("Failed to stop recording. Please try again.", Severity.Warning);
+        }
+    }
+
+    private async Task PlayRecording()
+    {
+        var result = await JS.InvokeAsync<bool>("audioInterop.playRecording");
+        if (!result)
+        {
+            Snackbar.Add("No recording available to play.", Severity.Info);
+        }
+    }
+
+    // private async Task GetUserClaims()
+    // {
+    //     var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+    //     var user = authState.User;
+
+    //     var username = user.FindFirst(ClaimTypes.Name)?.Value;
+    //     var email = user.FindFirst(ClaimTypes.Email)?.Value;
+    //     var isSubscribed = user.FindFirst("Subscribed")?.Value;
+    //     var isPaid = user.FindFirst("Paid")?.Value;
+    //     var expiration = user.FindFirst("Expiration")?.Value;
+
+    //     // Use these values as needed
+    // }
+
+
+
+
+}

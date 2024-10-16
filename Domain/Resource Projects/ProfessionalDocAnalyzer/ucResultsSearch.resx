@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="butRefreshFind.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAA95JREFUeF7tmj9oE3EUx4uIRUTsIBYRRURaRATpYHFQxFUHB0sRFxFE2s5FpCJB
+        EaV2EroVB8FFHFyKKMV2KYKrBJzsJBYrERsS0iRN/LzkRXLJJbm7VrhffB945C6/93t575vfn8tdegzD
+        MAzDMAzDMAzDMAzDMLqecrk8uLq6ukdPjU4g2EipVFoy0QIigmHl/0Y0au3d2Ng4wevlYrF4A7uJjRYK
+        hYvr6+v71a0lNcGErhUtk8kcpL572CcsJ8W2AhGSvEyLqNrdA21/BRO6SjTqGdzc3HxJUcVqeeGg3zwj
+        75yGq8DbHsEEPmNMm92EGnZjM1jb0RQUBHlRm66cNgkG45UPdpFsNnuIkfFZC9k2iPmVaXqKw+4RLJ/P
+        D1HYdy1i2yF2itH2WE/rcU+wXC43QEE/tQBfaM/zskDRU+yMlxB4mPPzHF/lvQnaX2PpinM43BJsbW1t
+        L0l/qebuSxZBnqbT6QPapSX4yvo3if2WjgFxSzDEmNXEm2DEJGXtUdfA0LWfvh+qUTrijmBMqzOadBMU
+        vKVrJOkrMTRcO9wRjILmNWkPvL8cRCxG5yS+P9pYSkO2ww3BmGonNWEPFJlhEzimbh2hy3S1Z2TcEIxE
+        H1bz9SILvLoEhm5bEc0NwRhJ8rvPA+/Jz6Cj6hIK+kUVLf6CkWRvNVcvCLakLpFgdD6SLyKMcR13TbvH
+        F7Q5W5XICwUn1MWoh0X9OOJMNFqYxd4wDKeR6e63DGSz2cPqYtSDOAndWxoZUpf4Ilu53xbfzih4NpFI
+        7NAQoSHGggpUj9zV7VWX+EKS45V0Q4Joz6OIJg9SEKzp2YB8EeoSb8g1kmBCFNHo80C7NzKtLvGGRCML
+        JoQRDfcjjKRMtacXuS2ubvGGXIMI9otC/W7ZVIz2JxquJclkchd+7yvRGiDGW3WLP+TbUTAK2tINRBGL
+        GG80XBNy81Jd4w/5BpqSFPwxys8lubai77KG8WNOXd2AhMOsYbL1Twd8CNKH3UesdndaV7A+7eIGJNwk
+        GEWW9NAXmovYEgv+Ha7jrsiCLXdt5ZEbzbewV7S3fVpEuzyGO61puANJNwmGEFMU9E1Ptx1ip5zZFRsh
+        f78pOSLrFYX9k78KEHtAP949qMFXMGmTnZHR9owi207RIGiMuVQqta/ywa7CuiNrTiMVwWrIA1yE28rf
+        nd4xBYc1nNu0uEbyCFZDfgci3F385aFsp79AreA7g9i+f6hzGh/RfAWrZ3FxcafujKMIcxsb4/h6oVC4
+        QP9+deteGkTrKJgBdaKZYEER0RAs0gNcwzAMwzAMwzAMwzAMwzAMh+jp+QNT/GN9KhtvigAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
+  <data name="picInfo_Search.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAsJJREFUeF7t2r9rE2EcBvAg4iIuDi4iiIMIgoMgIoo4KA5FcOmmLopQcJCOdslW
+        UkH8AzK46iIKpQpi6iqliFIQ6VakoQEhBI7k8svn6/tECrnvHUWHJu/zgeNK7rnI+/Dey+XOkoiIiIiI
+        iIiIiMi+V6/XD/d6vZnhcPio3+8vYr+E/QK2uTRNzzMWt3K5fADFzGL7MBgMUuxdOL6N8ir48yRPj0u3
+        272EwX/708YeoLgBinu+sbFxiF81/XDpPSiaUUVw/pckSY7zK6cXZsdjjvmfobQfU10aZtZtu6Q43v/l
+        E79+ujQajSPoaoeDdCGTYlvHtobtFz8uco//zPTApfiUg8uEcmwxr1ixPKVkCzs+W7BjjHm+85TpUKvV
+        DmJQubMLxTxkfAwu5buM5TnH+OTDLcR1DioTJtAyoy5k3jKeCYXPMzr5MJ5yGJZrllEXMndC1LXI6OTD
+        YKphTK5rjLqQuRmiriqjkw+DeRXG5CosDJfcHLOeZ4xOPgy2ijVox9uwxl1mNJP9MEduk8V4Ci/rKNit
+        BcrKXfBxvNdqtY7xlHjZ0wzMzhfsxWUZnhIv3rS+ZCcuzK5WFD/C83DN+shOXMgM7PcpT4sTy1plJ3mS
+        6MuyNQtlrbAQFzLv2+32KZ4WL3TxJFSSDUVtY1bdYjxu6OOKLUmhmnE49hOz6jTjgkI+sxvPRUYFZVwI
+        nWRDmYVPM6KCTpZCNa77jIpBIW9CLy69yN0NhdRCL66zjIpBISpsL1DIayzsmY9+bOt0OmcYFRHZl/j8
+        ax5rlr3x3sK2kqap7u6z2IteFDT2/Auf2f/wucqYjOS92UZpXxmTEZSyzH4yNZvNo4yKQSfvQjXZkiQ5
+        wagYW+zZzRjMvk3GZITP8dfZ0V/4zF5yzDAmu9k6hZlWQUdb6KqN/Rr2N3hYRERERERERERERCRupdJv
+        a/kHqBfsEEsAAAAASUVORK5CYII=
+</value>
+  </data>
+  <metadata name="htmlToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="picInfo_Search.ToolTip" xml:space="preserve">
+    <value>&lt;p&gt;Wildcards:&lt;/p&gt;        
+&lt;p&gt;  ? = Matches any single character. &lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;  * = Matches any one or more characters. For example, bet* matches any text that includes 'bet', such as 'better'. &lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;                    
+&lt;p&gt;The AND operator matches content where both terms exist anywhere in the text (e.g. Should AND Require, finds both) &lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;                    
+&lt;p&gt; The OR operator is the default conjunction operator. &lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+ &lt;p&gt;This means that if there is no Boolean operator between two terms, the OR operator is used. (e.g. Should OR Require, finds either) &lt;/p&gt;
+                                                                                                                                                                                                                                                                                                                                                                        
+&lt;p&gt; The NOT operator excludes content that contain the term after NOT. (e.g. Should Not Require) &lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+ &lt;p&gt;Grouping example: (Should OR Require) AND Must &lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;@"A Phrase is a group of words surrounded by double quotes such as ""Should Apply""."&lt;/p&gt;
+                                                                                                                                                                                                                                                 
+                                                                                                      </value>
+  </data>
+</root>

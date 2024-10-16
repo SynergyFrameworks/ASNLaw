@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  usersservice:
+    image: ${DOCKER_REGISTRY-}usersservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: network-microservice
+    container_name: users_service
+    restart: unless-stopped
+
+
+
+
+networks:
+  default:
+    external:
+      name: network-microservice

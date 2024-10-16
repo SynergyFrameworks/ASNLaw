@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{12A9900A-8A0D-4311-BA8A-D5AC45BF5114}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MatrixBuilder</RootNamespace>
+    <AssemblyName>MatrixBuilder</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>I:\Tom\Test\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>MatrixBuilder.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>6E0792FEDE66B5E987C18ECB2635DF9419718750</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MatrixBuilder_1_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MatrixBuilder.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\ProfessionalDocAnalyzer\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\ProfessionalDocAnalyzer\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Antlr3.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.13.3.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetZip.1.13.3\lib\net40\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Controls.WinForms, Version=19.2.274.1062, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gnostice.DocumentStudio.WinForms.19.2.1\lib\net40\Gnostice.Controls.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Core, Version=19.2.274.1062, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gnostice.DocumentStudio.Foundation.19.2.1\lib\net40\Gnostice.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Documents, Version=19.2.274.1062, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gnostice.DocumentStudio.Foundation.19.2.1\lib\net40\Gnostice.Documents.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Graphics.GDIPlus, Version=19.2.274.1062, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gnostice.DocumentStudio.Foundation.19.2.1\lib\net40\Gnostice.Graphics.GDIPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Graphics.Skia, Version=19.2.274.1062, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gnostice.DocumentStudio.Foundation.19.2.1\lib\net40\Gnostice.Graphics.Skia.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.ImageEngine, Version=19.2.274.1062, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gnostice.DocumentStudio.Foundation.19.2.1\lib\net40\Gnostice.ImageEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.PageManager, Version=19.2.274.1062, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Gnostice.DocumentStudio.WinForms.19.2.1\lib\net40\Gnostice.PageManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Habanero.Licensing.Shared, Version=2.0.0.0, Culture=neutral, PublicKeyToken=07f8d7292c654eb8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Habanero.Licensing.Shared.2.1.10.10\lib\Habanero.Licensing.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Habanero.Licensing.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=07f8d7292c654eb8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Habanero.Licensing.Shared.2.1.10.10\lib\Habanero.Licensing.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Hoot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\hOOt.1.0.0\lib\net48\Hoot.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Reduced, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ionic.Zip.Reduced.1.9.1.5\lib\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="IRTB, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IRTB.2.6.0\lib\IRTB.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=2.3.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Lucene.2.3.2.1\lib\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MetroFramework.1.3.0\lib\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MetroFramework.1.3.0\lib\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MetroFramework.1.3.0\lib\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RicherTextBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RicherTextBox.1.0.0\lib\RicherTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="unvell.ReoGrid, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\unvell.2.1.0\lib\unvell.ReoGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="unvell.ReoScript, Version=1.5.0.0, Culture=neutral, PublicKeyToken=85339a558a3a0c58, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\unvell.2.1.0\lib\unvell.ReoScript.dll</HintPath>
+    </Reference>
+    <Reference Include="unvell.ReoScript.EditorLib, Version=1.5.0.0, Culture=neutral, PublicKeyToken=85339a558a3a0c58, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\unvell.2.1.0\lib\unvell.ReoScript.EditorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppFolders.cs" />
+    <Compile Include="Directories.cs" />
+    <Compile Include="frmDocTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDocTypes.Designer.cs">
+      <DependentUpon>frmDocTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDocumentView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDocumentView.Designer.cs">
+      <DependentUpon>frmDocumentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDownloadMatrix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDownloadMatrix.Designer.cs">
+      <DependentUpon>frmDownloadMatrix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLists.Designer.cs">
+      <DependentUpon>frmLists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMartixCellCont.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMartixCellCont.Designer.cs">
+      <DependentUpon>frmMartixCellCont.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMatrix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMatrix.Designer.cs">
+      <DependentUpon>frmMatrix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMatrixDelAllocations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMatrixDelAllocations.Designer.cs">
+      <DependentUpon>frmMatrixDelAllocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMatrixSB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMatrixSB.Designer.cs">
+      <DependentUpon>frmMatrixSB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMatrixTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMatrixTemplate.Designer.cs">
+      <DependentUpon>frmMatrixTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRefRes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRefRes.Designer.cs">
+      <DependentUpon>frmRefRes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRefResContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRefResContent.Designer.cs">
+      <DependentUpon>frmRefResContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSBTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSBTemplate.Designer.cs">
+      <DependentUpon>frmSBTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWorkGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWorkGroup.Designer.cs">
+      <DependentUpon>frmWorkGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LicenseMgr.cs" />
+    <Compile Include="newifilter\ComHelper.cs" />
+    <Compile Include="newifilter\FilterLoader.cs" />
+    <Compile Include="newifilter\FilterReader.cs" />
+    <Compile Include="newifilter\IFilter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucMatrices.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMatrices.Designer.cs">
+      <DependentUpon>ucMatrices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMatrixBuild.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMatrixBuild.Designer.cs">
+      <DependentUpon>ucMatrixBuild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMatrixDocTypes2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMatrixDocTypes2.Designer.cs">
+      <DependentUpon>ucMatrixDocTypes2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMatrixList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMatrixList.Designer.cs">
+      <DependentUpon>ucMatrixList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMatrixRefRes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMatrixRefRes.Designer.cs">
+      <DependentUpon>ucMatrixRefRes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMatrixSB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMatrixSB.Designer.cs">
+      <DependentUpon>ucMatrixSB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucProjects.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucProjects.Designer.cs">
+      <DependentUpon>ucProjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSearchDAHoot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSearchDAHoot.Designer.cs">
+      <DependentUpon>ucSearchDAHoot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSearchHoot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSearchHoot.Designer.cs">
+      <DependentUpon>ucSearchHoot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSearchLucene.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSearchLucene.Designer.cs">
+      <DependentUpon>ucSearchLucene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSteps.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSteps.Designer.cs">
+      <DependentUpon>ucSteps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucWelcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucWelcome.Designer.cs">
+      <DependentUpon>ucWelcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucWorkGroups.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucWorkGroups.Designer.cs">
+      <DependentUpon>ucWorkGroups.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmDocTypes.resx">
+      <DependentUpon>frmDocTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDocumentView.resx">
+      <DependentUpon>frmDocumentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDownloadMatrix.resx">
+      <DependentUpon>frmDownloadMatrix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLists.resx">
+      <DependentUpon>frmLists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMartixCellCont.resx">
+      <DependentUpon>frmMartixCellCont.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMatrix.resx">
+      <DependentUpon>frmMatrix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMatrixDelAllocations.resx">
+      <DependentUpon>frmMatrixDelAllocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMatrixSB.resx">
+      <DependentUpon>frmMatrixSB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMatrixTemplate.resx">
+      <DependentUpon>frmMatrixTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRefRes.resx">
+      <DependentUpon>frmRefRes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRefResContent.resx">
+      <DependentUpon>frmRefResContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSBTemplate.resx">
+      <DependentUpon>frmSBTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWorkGroup.resx">
+      <DependentUpon>frmWorkGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ucMatrices.resx">
+      <DependentUpon>ucMatrices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMatrixBuild.resx">
+      <DependentUpon>ucMatrixBuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMatrixDocTypes2.resx">
+      <DependentUpon>ucMatrixDocTypes2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMatrixList.resx">
+      <DependentUpon>ucMatrixList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMatrixRefRes.resx">
+      <DependentUpon>ucMatrixRefRes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMatrixSB.resx">
+      <DependentUpon>ucMatrixSB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucProjects.resx">
+      <DependentUpon>ucProjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSearchDAHoot.resx">
+      <DependentUpon>ucSearchDAHoot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSearchHoot.resx">
+      <DependentUpon>ucSearchHoot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSearchLucene.resx">
+      <DependentUpon>ucSearchLucene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSteps.resx">
+      <DependentUpon>ucSteps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucWelcome.resx">
+      <DependentUpon>ucWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucWorkGroups.resx">
+      <DependentUpon>ucWorkGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="MatrixBuilder_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\License.lic" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appbar.alert.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="appbar.page.multiple.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="folder_lock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="folder_puzzle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="home-variant.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MatrixBuilder.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Atebion.Common\Atebion.Common.csproj">
+      <Project>{46ec7776-5256-4c0f-96f4-8899bc9265e2}</Project>
+      <Name>Atebion.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AtebionOLEmail\AtebionOLEmail.vbproj">
+      <Project>{676926cb-5e1a-4e9b-bf12-9aae4c295b64}</Project>
+      <Name>AtebionOLEmail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AtebionRTFf2HTMLf\AtebionRTFf2HTMLf.csproj">
+      <Project>{72713163-8630-4128-839a-b2e491d503dc}</Project>
+      <Name>AtebionRTFf2HTMLf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AtebionWordTemplate\AtebionWordTemplate\AtebionWordTemplate\AtebionWordTemplate.csproj">
+      <Project>{c4b628ac-e22e-4620-8eab-f4c1b90944e6}</Project>
+      <Name>AtebionWordTemplate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WorkgroupMgr\WorkgroupMgr.csproj">
+      <Project>{75b98258-73ed-4d2d-9c33-f6375ad46c42}</Project>
+      <Name>WorkgroupMgr</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

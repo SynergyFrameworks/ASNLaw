@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ASNDistributedLock</name>
+    </assembly>
+    <members>
+        <member name="T:ASNDistributedLock.DistributedLockCondition">
+            <summary>
+            Distributed lock condition information to notice the payload method about running conditions
+            </summary>
+        </member>
+        <member name="F:ASNDistributedLock.DistributedLockCondition.Instant">
+            <summary>
+            Distributed lock was acquired instantly
+            </summary>
+        </member>
+        <member name="F:ASNDistributedLock.DistributedLockCondition.Delayed">
+            <summary>
+            Distributed lock was acquired after awaiting for previous lock
+            </summary>
+        </member>
+        <member name="F:ASNDistributedLock.DistributedLockCondition.NoLock">
+            <summary>
+            Distributed lock wasn't acquired because of run in bypass (no distributed lock)
+            </summary>
+        </member>
+        <member name="T:ASNDistributedLock.DistributedLockOptions">
+            <summary>
+            Distributed lock options
+            </summary>
+        </member>
+        <member name="P:ASNDistributedLock.DistributedLockOptions.WaitTime">
+            <summary>
+            Total time to wait until the lock is available
+            </summary>
+        </member>
+        <member name="T:ASNDistributedLock.IDistributedLockProvider">
+            <summary>
+            Interface for distributed lock implementations
+            </summary>
+        </member>
+        <member name="M:ASNDistributedLock.IDistributedLockProvider.ExecuteSynhronized(System.String,System.Action{ASNDistributedLock.DistributedLockCondition})">
+            <summary>
+            Run payload method with a distributed lock
+            </summary>        
+            <param name="resourceId">Identifier of locking resource</param>
+            <param name="payload">Payload method to run under the acquired lock</param>
+        </member>
+        <member name="T:ASNDistributedLock.NoLockDistributedLockProvider">
+            <summary>
+            Distributed lock provider that implements bypass mode (no distributed lock)
+            </summary>
+        </member>
+        <member name="M:ASNDistributedLock.NoLockDistributedLockProvider.#ctor(Microsoft.Extensions.Logging.ILogger{ASNDistributedLock.NoLockDistributedLockProvider})">
+            <summary>
+            Construct the provider
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:ASNDistributedLock.NoLockDistributedLockProvider.ExecuteSynhronized(System.String,System.Action{ASNDistributedLock.DistributedLockCondition})">
+            <summary>
+            Run payload with no lock
+            </summary>
+            <param name="resourceId"></param>
+            <param name="payload"></param>
+        </member>
+        <member name="T:ASNDistributedLock.RedLockDistributedLockProvider">
+            <summary>
+            Distributed lock implemented thru Redis RedLock
+            </summary>
+        </member>
+        <member name="M:ASNDistributedLock.RedLockDistributedLockProvider.#ctor(StackExchange.Redis.IConnectionMultiplexer,Microsoft.Extensions.Options.IOptions{ASNDistributedLock.DistributedLockOptions},Microsoft.Extensions.Logging.ILogger{ASNDistributedLock.RedLockDistributedLockProvider})">
+            <summary>
+            Construct the provider
+            </summary>
+            <param name="redisConnMultiplexer">Connection multiplexer pointing to the Redis server, used for locking</param>
+            <param name="_options">Total time to wait until the lock is available</param>        
+        </member>
+        <member name="M:ASNDistributedLock.RedLockDistributedLockProvider.ExecuteSynhronized(System.String,System.Action{ASNDistributedLock.DistributedLockCondition})">
+            <summary>
+            Run payload method with distributed lock
+            </summary>        
+            <param name="resourceId">Identifier of locking resource</param>
+            <param name="payload">Payload method to run under the acquired lock</param>
+        </member>
+    </members>
+</doc>

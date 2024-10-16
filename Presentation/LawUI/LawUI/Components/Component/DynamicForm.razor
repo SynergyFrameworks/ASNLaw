@@ -1,0 +1,27 @@
+﻿@namespace LawUI.Components
+@using System.Collections.Generic
+@using LawUI.Domain.Model
+@using Microsoft.AspNetCore.Components
+@using MudBlazor
+
+<MudForm Model="@Model" @bind-IsValid="IsValid">
+    @foreach (var field in Fields)
+    {
+        <MudTextField T="string" Label="@field.Key" @bind-Value="field.Value" />
+    }
+    <MudButton Color="Color.Primary" Disabled="!IsValid" OnClick="SaveChanges">Save Changes</MudButton>
+</MudForm>
+
+@code {
+    [Parameter] public List<LawUI.Domain.Model.DocumentField> Fields { get; set; } // Fully qualify the class name
+    [Parameter] public EventCallback<List<LawUI.Domain.Model.DocumentField>> OnSave { get; set; } // Fully qualify the class name
+
+    private bool IsValid { get; set; }
+
+    private Dictionary<string, string> Model => Fields.ToDictionary(f => f.Key, f => f.Value);
+
+    private async Task SaveChanges()
+    {
+        await OnSave.InvokeAsync(Fields);
+    }
+}

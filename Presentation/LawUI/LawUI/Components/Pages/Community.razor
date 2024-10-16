@@ -1,0 +1,58 @@
+@page "/community"
+@using Microsoft.AspNetCore.SignalR.Client
+@inject NavigationManager Navigation
+@inject HttpClient HttpClient
+
+<MudDataGrid T="ChatRoom" Items="@ChatRooms" Filterable="true" FilterMode="DataGridFilterMode.ColumnFilterRow">
+    <Columns>
+        <PropertyColumn Property="x => x.Name" Title="Chat Room Name" />
+        <PropertyColumn Property="x => x.Description" Title="Description" />
+        <CommandColumn>
+            <CommandTemplate  Context="chatRoom">
+                <!-- 'chatRoom' refers to the current row (ChatRoom) -->
+               @*  <MudButton OnClick="@(() => JoinChatRoom(chatRoom))" Color="Color.Primary">Join</MudButton> *@
+            </CommandTemplate>
+        </CommandColumn>
+    </Columns>
+</MudDataGrid>
+
+@code {
+    private IEnumerable<ChatRoom> ChatRooms = new List<ChatRoom>();
+    private HubConnection _hubConnection;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Fetch available chat rooms
+        ChatRooms = await HttpClient.GetFromJsonAsync<List<ChatRoom>>("api/chatrooms");
+
+        // Initialize the SignalR connection
+        _hubConnection = new HubConnectionBuilder()
+            .WithUrl(Navigation.ToAbsoluteUri("/chathub"))
+            .Build();
+
+        // Start the connection
+        await _hubConnection.StartAsync();
+    }
+
+    private async Task JoinChatRoom(ChatRoom room)
+    {
+        // Navigate to the chat room page, passing the room ID
+        Navigation.NavigateTo($"/chatroom/{room.Id}");
+    }
+
+    public async void Dispose()
+    {
+        if (_hubConnection != null)
+        {
+            await _hubConnection.StopAsync();
+            await _hubConnection.DisposeAsync();
+        }
+    }
+
+    public class ChatRoom
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
+}

@@ -1,0 +1,106 @@
+﻿@page "/document-editor"
+@using Azure.AI.FormRecognizer.DocumentAnalysis
+@using MudBlazor
+@using System.Collections.Generic
+@using LawUI.Domain.Model // Add the namespace for DocumentField and Document classes
+@using LawUI.Components // Add the namespace for DynamicForm component
+
+@inject ILogger<DocumentEditor> Logger
+@inject ISnackbar Snackbar
+
+<PageTitle>Document Editor</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Document Editor</MudText>
+<MudText Class="mb-8">Edit and Generate New Document</MudText>
+
+<MudTable T="KeyValuePair<string, string>" Items="_analyzedDocuments" Hover="true" @bind-SelectedItem="_selectedDocument">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Analyzed Documents</MudText>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Field</MudTh>
+        <MudTh>Value</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Field">@context.Key</MudTd>
+        <MudTd DataLabel="Value">@context.Value</MudTd>
+    </RowTemplate>
+</MudTable>
+
+@if (_selectedDocument.Key != null)
+{
+        <DynamicForm Fields="_selectedDocumentFields" OnSave="HandleSave" />
+}
+
+<MudButton Color="Color.Primary" OnClick="GenerateNewDocument">Generate New Document</MudButton>
+
+@code {
+    private Dictionary<string, string> _analyzedDocuments = new Dictionary<string, string>();
+    private KeyValuePair<string, string> _selectedDocument = new KeyValuePair<string, string>();
+    private List<LawUI.Domain.Model.DocumentField> _selectedDocumentFields = new List<LawUI.Domain.Model.DocumentField>();
+    private bool _isValid;
+
+    private void OnDocumentSelected(KeyValuePair<string, string> selectedDocument)
+    {
+        _selectedDocument = selectedDocument;
+        _selectedDocumentFields = LoadDocumentFields(_selectedDocument);
+    }
+
+    private List<LawUI.Domain.Model.DocumentField> LoadDocumentFields(KeyValuePair<string, string> document)
+    {
+        var fields = new List<LawUI.Domain.Model.DocumentField>();
+        fields.Add(new LawUI.Domain.Model.DocumentField { Key = document.Key, Value = document.Value });
+        return fields;
+    }
+
+    private void HandleSave(List<LawUI.Domain.Model.DocumentField> updatedFields)
+    {
+        try
+        {
+            foreach (var field in updatedFields)
+            {
+                _selectedDocument = new KeyValuePair<string, string>(field.Key, field.Value);
+            }
+            Snackbar.Add("Changes saved successfully!", Severity.Success);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error saving document");
+            Snackbar.Add("Error saving changes.", Severity.Error);
+        }
+    }
+
+    private void GenerateNewDocument()
+    {
+        if (_selectedDocument.Key == null)
+        {
+            Snackbar.Add("No document selected.", Severity.Warning);
+            return;
+        }
+
+        try
+        {
+            var newDocument = GenerateNewDocument(_selectedDocument);
+            SaveDocument(newDocument);
+            Snackbar.Add("New document generated successfully!", Severity.Success);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error generating new document");
+            Snackbar.Add("Error generating new document.", Severity.Error);
+        }
+    }
+
+    private Document GenerateNewDocument(KeyValuePair<string, string> updatedFields)
+    {
+        var newDocument = new Document();
+        newDocument.ReplaceField(updatedFields.Key, updatedFields.Value);
+        return newDocument;
+    }
+
+    private void SaveDocument(Document newDocument)
+    {
+        // Logic to save or download the new document
+        // For example, save to a database or provide a download link
+    }
+}

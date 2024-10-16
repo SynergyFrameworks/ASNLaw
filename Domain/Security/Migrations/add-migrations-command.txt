@@ -1,0 +1,4 @@
+Add-Migration Initial -Context Scion.Business.Security.Repositories.SecurityDbContext -Verbose -OutputDir Migrations -Project Scion.Business.Security -Debug
+
+REMOVE:
+Remove-Migration -Context Scion.Business.Security.Repositories.SecurityDbContext -Project Scion.Business.Security

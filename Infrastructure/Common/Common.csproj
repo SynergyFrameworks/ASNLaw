@@ -1,0 +1,112 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\**" />
+    <Compile Remove="EventStores\Stores\EventStore\**" />
+    <Compile Remove="Excel\Transformers\Reporting\**" />
+    <Compile Remove="Persistence\Mongo\**" />
+    <Compile Remove="Resolvers\**" />
+    <Compile Remove="Search\**" />
+    <Compile Remove="Security\User\**" />
+    <EmbeddedResource Remove="Controllers\**" />
+    <EmbeddedResource Remove="EventStores\Stores\EventStore\**" />
+    <EmbeddedResource Remove="Excel\Transformers\Reporting\**" />
+    <EmbeddedResource Remove="Persistence\Mongo\**" />
+    <EmbeddedResource Remove="Resolvers\**" />
+    <EmbeddedResource Remove="Search\**" />
+    <EmbeddedResource Remove="Security\User\**" />
+    <None Remove="Controllers\**" />
+    <None Remove="EventStores\Stores\EventStore\**" />
+    <None Remove="Excel\Transformers\Reporting\**" />
+    <None Remove="Persistence\Mongo\**" />
+    <None Remove="Resolvers\**" />
+    <None Remove="Search\**" />
+    <None Remove="Security\User\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="FullTenant.cs" />
+    <Compile Remove="GlobalSuppressions.cs" />
+    <Compile Remove="Persistence\Google\examples\GoogleDriveAuthorization.cs" />
+    <Compile Remove="Persistence\Google\examples\GoogleDriveBase.cs" />
+    <Compile Remove="Tenant.cs" />
+    <Compile Remove="Tenant\FullTenant.cs" />
+    <Compile Remove="Tenant\TenantApplication.cs" />
+    <Compile Remove="Tenant\TenantApplicationQuery.cs" />
+    <Compile Remove="Tenant\TenantByIdQuery.cs" />
+    <Compile Remove="Tenant\TenantByName.cs" />
+    <Compile Remove="Tenant\TenantByNameQuery.cs" />
+    <Compile Remove="Tenant\TenantByUrl.cs" />
+    <Compile Remove="Tenant\TenantByUrlQuery.cs" />
+    <Compile Remove="Tenant\TenantKeywordMapping.cs" />
+    <Compile Remove="Tenant\TenantKeywordMappingQuery.cs" />
+    <Compile Remove="Tenant\TenantLogoByUrl.cs" />
+    <Compile Remove="Tenant\TenantLogoByUrlQuery.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.21.2" />
+    <PackageReference Include="Azure.Storage.Common" Version="12.20.1" />
+    <PackageReference Include="Confluent.Kafka" Version="2.5.3" />
+    <PackageReference Include="Consul" Version="1.7.14.4" />
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Dapr.AspNetCore" Version="1.14.0" />
+    <PackageReference Include="Elastic.Apm.NetCoreAll" Version="1.28.5" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="Google.Apis.Drive.v3" Version="1.68.0.3508" />
+    <PackageReference Include="Hangfire.Core" Version="1.8.14" />
+    <PackageReference Include="log4net" Version="2.0.17" />
+    <PackageReference Include="MassTransit" Version="8.2.5" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.1" />
+    <PackageReference Include="MassTransit.Kafka" Version="8.2.5" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.5" />
+    <PackageReference Include="MediatR" Version="12.4.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.22.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer" Version="2.22.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" Version="2.22.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="8.0.8" />
+    <PackageReference Include="Microsoft.Azure.SignalR" Version="1.27.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.28.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="OpenIddict" Version="5.8.0" />
+    <PackageReference Include="OpenIddict.Core" Version="5.8.0" />
+    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.8.0" />
+    <PackageReference Include="Serilog" Version="4.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
+    <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
+    <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="10.0.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.8.12" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="System.Formats.Asn1" Version="8.0.1" />
+    <PackageReference Include="System.Reactive" Version="6.0.1" />
+    <PackageReference Include="System.Runtime.Caching" Version="8.0.0" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="8.0.1" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Excel\Excel.csproj" />
+    <ProjectReference Include="..\Word\Word.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Persistence\Google\examples\" />
+  </ItemGroup>
+
+</Project>

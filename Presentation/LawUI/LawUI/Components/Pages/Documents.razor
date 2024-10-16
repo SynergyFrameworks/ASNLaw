@@ -1,0 +1,106 @@
+@page "/documents"
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+@using LawUI.ViewModels
+@using Microsoft.AspNetCore.Components.Forms
+@using MudBlazor
+
+@inject ILogger<Documents> Logger
+@inject IHttpClientFactory ClientFactory
+@inject ISnackbar Snackbar
+@inject IJSRuntime JS
+@inject MongoDbService MongoDbService
+
+<PageTitle>Documents</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Document Upload</MudText>
+<MudText Class="mb-8">Upload Document to Share</MudText>
+
+<MudTabs Outlined="true">
+    <MudTabPanel Text="Api" Icon="@Icons.Material.Filled.Api"/>
+    <MudTabPanel Icon="@Icons.Material.Filled.Build"/>
+    <MudTabPanel Text="Bug Report" Icon="@Icons.Material.Filled.BugReport"/>
+</MudTabs>
+
+<MudStack Style="width: 100%">
+    <MudForm Model="@_viewModel.Model"
+             @bind-IsValid="_viewModel.IsValid"
+             @bind-IsTouched="_viewModel.IsTouched"
+             Validation="@(_viewModel.ValidationRules.ValidateValue)">
+        <MudItem xs="12">
+            <MudFileUpload T="IReadOnlyList<IBrowserFile>"
+                           @ref="@_viewModel.FileUpload"
+                           @bind-Files="_viewModel.Model.Files"
+                           For="@(() => _viewModel.Model.Files)"
+                           AppendMultipleFiles
+                           Hidden="@false"
+                           InputClass="absolute mud-width-full mud-height-full overflow-hidden z-10"
+                           InputStyle="opacity:0"
+                           ErrorText="@string.Empty"
+                           tabindex="-1"
+                           @ondrop="@_viewModel.ClearDragClass"
+                           @ondragenter="@_viewModel.SetDragClass"
+                           @ondragleave="@_viewModel.ClearDragClass"
+                           @ondragend="@_viewModel.ClearDragClass">
+                <ActivatorContent>
+                    <MudPaper Height="300px"
+                              Outlined="true"
+                              Class="@_viewModel.DragClass">
+                        <MudText Typo="Typo.h6">
+                            Drag and drop files here or click
+                        </MudText>
+                        @foreach (var file in _viewModel.Model.Files?.Select(file => file.Name) ?? Enumerable.Empty<string>())
+                        {
+                            <MudChip T="string" Color="Color.Dark" Text="@file" />
+                        }
+                    </MudPaper>
+                </ActivatorContent>
+            </MudFileUpload>
+            <MudTextField @bind-Value="_viewModel.Model.Description" Label="Description" Required="true" />
+            <MudToolBar Gutters="@false"
+                        Class="relative d-flex justify-end gap-4">
+                <MudButton Color="Color.Primary"
+                           OnClick="@(_viewModel.OpenFilePickerAsync)"
+                           Variant="Variant.Filled">
+                    Open file picker
+                </MudButton>
+                <MudButton Color="Color.Primary"
+                           Disabled="@(!_viewModel.IsValid || !_viewModel.IsTouched || _viewModel.Model.Files is null || !_viewModel.Model.Files.Any())"
+                           OnClick="@(_viewModel.UploadToApi)"
+                           Variant="Variant.Filled">
+                    Upload to API
+                </MudButton>
+                <MudButton Color="Color.Error"
+                           Disabled="@(_viewModel.Model.Files is null || !_viewModel.Model.Files.Any())"
+                           OnClick="@(_viewModel.ClearAsync)"
+                           Variant="Variant.Filled">
+                    Clear
+                </MudButton>
+            </MudToolBar>
+        </MudItem>
+        <MudItem>
+            @if (_viewModel.FileUpload?.ValidationErrors.Any() ?? false)
+            {
+                <MudText Color="Color.Error"
+                         Typo="@Typo.caption">
+                    @_viewModel.FileUpload?.ValidationErrors[0]
+                </MudText>
+            }
+        </MudItem>
+        <MudItem xs="12">
+            IsValid: @_viewModel.IsValid - IsTouched: @_viewModel.IsTouched
+        </MudItem>
+    </MudForm>
+</MudStack>
+
+<button @onclick="_viewModel.DownloadFileFromStream">
+    Download File From Stream
+</button>
+
+@code {
+    private DocumentViewModel _viewModel = default!;
+
+    protected override void OnInitialized()
+    {
+        _viewModel = new DocumentViewModel(Logger, ClientFactory, Snackbar, JS, MongoDbService);
+    }
+}

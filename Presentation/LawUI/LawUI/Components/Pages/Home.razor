@@ -1,0 +1,62 @@
+﻿@page "/"
+@* @attribute [StreamRendering] *@
+@*Keyframes by https://animate.style/*@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<style type="text/css">
+    /* Your existing styles here */
+</style>
+<PageTitle>Home</PageTitle>
+
+<MudCarousel Class="mud-width-full" Style="height:200px;" ShowArrows="@arrows" ShowBullets="@bullets" EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle" TData="object">
+    <MudCarouselItem Transition="transition" Color="@Color.Primary">
+        <div class="d-flex" style="height:100%">
+            <MudIcon Class="mx-auto my-auto" Icon="@Icons.Custom.Brands.Telegram" Size="@Size.Large" />
+        </div>
+    </MudCarouselItem>
+    <MudCarouselItem Transition="transition" Color="@Color.Secondary">
+        <div class="d-flex" style="height:100%">
+            <MudIcon Class="mx-auto my-auto" Icon="@Icons.Custom.Brands.TikTok" Size="@Size.Large" />
+        </div>
+    </MudCarouselItem>
+    <MudCarouselItem Transition="Transition.Custom" CustomTransitionEnter="@AnimationEntrance" CustomTransitionExit="@AnimationExit">
+        <div class="d-flex" style="height:100%">
+            <MudIcon Class="mx-auto my-auto" Icon="@Icons.Custom.Brands.YouTube" Color="@Color.Primary" Size="@Size.Large" />
+        </div>
+    </MudCarouselItem>
+</MudCarousel>
+
+<MudSelect T="Transition" @bind-Value="transition" Label="Transition" Class="ma-2">
+    <MudSelectItem Value="@Transition.Fade">Fade</MudSelectItem>
+    <MudSelectItem Value="@Transition.Slide">Slide</MudSelectItem>
+    <MudSelectItem Value="@Transition.None">None</MudSelectItem>
+</MudSelect>
+
+<MudSwitch @bind-Value="@arrows" Color="Color.Primary" Label="Show Arrows" />
+<MudSwitch @bind-Value="@bullets" Color="Color.Primary" Label="Show Bullets" />
+<MudSwitch @bind-Value="@enableSwipeGesture" Color="Color.Primary" Label="Enable Swipe Gesture" />
+<MudSwitch @bind-Value="@autocycle" Color="Color.Primary" Label="Auto Cycle (Default: 5 secs)" />
+
+<MudAlert Severity="Severity.Normal">
+    You can find documentation and examples on our website here:
+    <MudLink Href="https://mudblazor.com" Target="_blank" Typo="Typo.body2" Color="Color.Primary">
+        <b>www.mudblazor.com</b>
+    </MudLink>
+</MudAlert>
+
+<MudTextField @bind-Value="AnimationEntrance" Label="Entrance Class (copy and paste from style tag)" Class="ma-2" />
+<MudTextField @bind-Value="AnimationExit" Label="Exit Class (copy and paste from style tag)" Class="ma-2" />
+
+@code {
+    private bool arrows = true;
+    private bool bullets = true;
+    private bool enableSwipeGesture = true;
+    private bool autocycle = true;
+    private Transition transition = Transition.Slide;
+    private string AnimationEntrance = "bounceIn";
+    private string AnimationExit = "bounceOut";
+
+    protected override void OnInitialized()
+    {
+        // Any initialization logic here
+    }
+}

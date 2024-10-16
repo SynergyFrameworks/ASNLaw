@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Settings.Model.GroupSettings">
+    <Position X="1.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAkAA=</HashCode>
+      <FileName>Model\Setting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Settings.Model.Acronym">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Acronym.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Settings.Model.Dictionary">
+    <Position X="3.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEACAAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>Model\Dictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Settings.Model.Keyword">
+    <Position X="1.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAgAAAAAA=</HashCode>
+      <FileName>Model\Keyword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Settings.Model.Color">
+    <Position X="1.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Model\Color.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Settings.Model.TaskSettings" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\TaskSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

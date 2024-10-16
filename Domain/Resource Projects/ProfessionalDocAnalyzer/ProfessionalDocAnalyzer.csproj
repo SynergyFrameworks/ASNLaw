@@ -1,0 +1,1259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{66ABCED9-A91D-40AA-B32F-929CE103B916}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProfessionalDocAnalyzer</RootNamespace>
+    <AssemblyName>ProDocAnalyzer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>ProDocAnalyzer.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>scion_icon_v2_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr3.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.9.1.2\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.13.3.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.13.3\lib\net40\DotNetZip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Merit Source\74\ProdBuild3\ProdBuild\ProfessionalDocAnalyzer\Atebion.ConceptAnalyzer\bin\Debug\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Controls.WinForms, Version=19.3.400.1421, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.19.3.400.1421\lib\Gnostice.Controls.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Converter, Version=19.3.400.1421, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.19.3.400.1421\lib\Gnostice.Converter.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Core, Version=19.3.400.1421, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.19.3.400.1421\lib\Gnostice.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Documents, Version=19.3.400.1421, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.19.3.400.1421\lib\Gnostice.Documents.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.Graphics.GDIPlus, Version=19.3.400.1421, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.19.3.400.1421\lib\Gnostice.Graphics.GDIPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.ImageEngine, Version=19.3.400.1421, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.19.3.400.1421\lib\Gnostice.ImageEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.PageManager, Version=19.3.400.1421, Culture=neutral, PublicKeyToken=fc8cb3ab6a24df63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.19.3.400.1421\lib\Gnostice.PageManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.XtremeFontEngine.4.0, Version=1.0.1905.420, Culture=neutral, PublicKeyToken=461de9da64be3a84, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.19.3.400.1421\lib\Gnostice.XtremeFontEngine.4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Gnostice.XtremeImageEngine, Version=12.0.1592.130, Culture=neutral, PublicKeyToken=67e9a3a7c22f1690, processorArchitecture=MSIL">
+      <HintPath>..\packages\Gnostice.19.3.400.1421\lib\Gnostice.XtremeImageEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Habanero.Licensing.Shared, Version=2.0.0.0, Culture=neutral, PublicKeyToken=07f8d7292c654eb8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Habanero.Licensing.Validation.2.1.10.12\lib\Habanero.Licensing.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Habanero.Licensing.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=07f8d7292c654eb8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Habanero.Licensing.Validation.2.1.10.12\lib\Habanero.Licensing.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Hoot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\hOOt.1.0.0\lib\net48\Hoot.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.AWT.WinForms, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.AWT.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Beans, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Beans.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Charsets, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Charsets.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Cldrdata, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Cldrdata.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Corba, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Corba.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Jdbc, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Jdbc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Localedata, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Localedata.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Management, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Media, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Misc, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Misc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Naming, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Naming.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Nashorn, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Nashorn.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Remoting, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Remoting.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.SwingAWT, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Tools, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.API, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Bind, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Bind.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Crypto, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Parse, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Parse.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Transform, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Transform.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.WebServices, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.XPath, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime.JNI, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.JNI.dll</HintPath>
+    </Reference>
+    <Reference Include="IRTB, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\IRTB.2.6.0\lib\IRTB.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=2.3.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.2.3.2.1\lib\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.1.3.0\lib\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.1.3.0\lib\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.1.3.0\lib\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Msagl, Version=3.0.0.0, Culture=neutral, PublicKeyToken=640c57aa40e7ae7d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Msagl.1.1.3\lib\net40\Microsoft.Msagl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Msagl.Drawing, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8a3d7c21d5fa1306, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Msagl.Drawing.1.1.3\lib\net40\Microsoft.Msagl.Drawing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Msagl.GraphViewerGdi, Version=3.0.0.0, Culture=neutral, PublicKeyToken=fffc27ea4058b3a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Msagl.GraphViewerGDI.1.1.3\lib\net40\Microsoft.Msagl.GraphViewerGdi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="OpenNLP, Version=1.0.5456.34234, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenNLP.1.0.5456.34234\lib\OpenNLP.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTextSummarizer, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTextSummarizer.1.0.2\lib\OpenTextSummarizer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RicherTextBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RicherTextBox.1.0.0\lib\RicherTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TagCloud, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TagCloud.1.0.0\lib\TagCloud.dll</HintPath>
+    </Reference>
+    <Reference Include="TikaOnDotNet, Version=1.12.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TikaOnDotnet.TextExtractor.1.12.2\lib\TikaOnDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="TikaOnDotNet.TextExtraction, Version=1.12.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TikaOnDotnet.TextExtractor.1.12.2\lib\TikaOnDotNet.TextExtraction.dll</HintPath>
+    </Reference>
+    <Reference Include="unvell.ReoGrid, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\unvell.2.1.0\lib\unvell.ReoGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="unvell.ReoScript, Version=1.5.0.0, Culture=neutral, PublicKeyToken=85339a558a3a0c58, processorArchitecture=MSIL">
+      <HintPath>..\packages\unvell.2.1.0\lib\unvell.ReoScript.dll</HintPath>
+    </Reference>
+    <Reference Include="unvell.ReoScript.EditorLib, Version=1.5.0.0, Culture=neutral, PublicKeyToken=85339a558a3a0c58, processorArchitecture=MSIL">
+      <HintPath>..\packages\unvell.2.1.0\lib\unvell.ReoScript.EditorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ZzzzRangeBar, Version=1.0.5537.22243, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZzzzRangeBar.1.0.5537.22243\lib\ZzzzRangeBar.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnalysisResultsType.cs" />
+    <Compile Include="AnalyzerManager.cs" />
+    <Compile Include="AppFolders.cs" />
+    <Compile Include="clsKeywordsHack.cs" />
+    <Compile Include="ContentTypes.cs" />
+    <Compile Include="CurrentSettings.cs" />
+    <Compile Include="DocumentAnalysis.cs" />
+    <Compile Include="DocumentManager.cs" />
+    <Compile Include="EmailAtebion.cs" />
+    <Compile Include="ExcelTemplateFields.cs" />
+    <Compile Include="ExportManager.cs" />
+    <Compile Include="ExportManager_Dictionaries.cs" />
+    <Compile Include="FileInformation.cs" />
+    <Compile Include="frmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategory.Designer.cs">
+      <DependentUpon>frmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCombinemultiSec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCombinemultiSec.designer.cs">
+      <DependentUpon>frmCombinemultiSec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConcepts2Dic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConcepts2Dic.Designer.cs">
+      <DependentUpon>frmConcepts2Dic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeepAnalyticsExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeepAnalyticsExport.Designer.cs">
+      <DependentUpon>frmDeepAnalyticsExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDefLib.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDefLib.Designer.cs">
+      <DependentUpon>frmDefLib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDictionary2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDictionary2.Designer.cs">
+      <DependentUpon>frmDictionary2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDocumentEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDocumentEdit.designer.cs">
+      <DependentUpon>frmDocumentEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDocuments3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDocuments3.designer.cs">
+      <DependentUpon>frmDocuments3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDocumentView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDocumentView.Designer.cs">
+      <DependentUpon>frmDocumentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDownLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDownLoad.Designer.cs">
+      <DependentUpon>frmDownLoad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditSec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditSec.designer.cs">
+      <DependentUpon>frmEditSec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExcelTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExcelTemp.Designer.cs">
+      <DependentUpon>frmExcelTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExport.designer.cs">
+      <DependentUpon>frmExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExported.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExported.designer.cs">
+      <DependentUpon>frmExported.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExportSec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExportSec.Designer.cs">
+      <DependentUpon>frmExportSec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHootProcessing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHootProcessing.Designer.cs">
+      <DependentUpon>frmHootProcessing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIgnoreLst.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIgnoreLst.Designer.cs">
+      <DependentUpon>frmIgnoreLst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportDic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportDic.Designer.cs">
+      <DependentUpon>frmImportDic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInputDialog.Designer.cs">
+      <DependentUpon>frmInputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKeywords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKeywords.designer.cs">
+      <DependentUpon>frmKeywords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLastestReleaseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLastestReleaseInfo.designer.cs">
+      <DependentUpon>frmLastestReleaseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProject.designer.cs">
+      <DependentUpon>frmProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQCSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQCSettings.Designer.cs">
+      <DependentUpon>frmQCSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRAMModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRAMModel.Designer.cs">
+      <DependentUpon>frmRAMModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReadabilityRef.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReadabilityRef.Designer.cs">
+      <DependentUpon>frmReadabilityRef.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplitSec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplitSec.designer.cs">
+      <DependentUpon>frmSplitSec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSynonymNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSynonymNew.Designer.cs">
+      <DependentUpon>frmSynonymNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTacksWorkflowConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTacksWorkflowConfig.Designer.cs">
+      <DependentUpon>frmTacksWorkflowConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserCard.Designer.cs">
+      <DependentUpon>frmUserCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWGConnect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWGConnect.Designer.cs">
+      <DependentUpon>frmWGConnect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWGNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWGNew.Designer.cs">
+      <DependentUpon>frmWGNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Indexer.cs" />
+    <Compile Include="IniFile.cs" />
+    <Compile Include="KeywordsFoundFields.cs" />
+    <Compile Include="KeywordsMgr.cs" />
+    <Compile Include="KeywordsMgr2.cs" />
+    <Compile Include="KwDicCon_Fields.cs" />
+    <Compile Include="LastestRelease.cs" />
+    <Compile Include="LicenseMgr.cs" />
+    <Compile Include="MSWordAutomation.cs" />
+    <Compile Include="newifilter\ComHelper.cs" />
+    <Compile Include="newifilter\FilterLoader.cs" />
+    <Compile Include="newifilter\FilterReader.cs" />
+    <Compile Include="newifilter\IFilter.cs" />
+    <Compile Include="OutLookMgr.cs" />
+    <Compile Include="PageLineFields.cs" />
+    <Compile Include="PageMappingFields.cs" />
+    <Compile Include="ParagraphParseEng.cs" />
+    <Compile Include="ParseResultsFields.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueriesFoundFields.cs" />
+    <Compile Include="QueryFinder.cs" />
+    <Compile Include="RichTextBoxPrintHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SettingsMenu.cs" />
+    <Compile Include="SSTCryptographer.cs" />
+    <Compile Include="ucAcroDictionaries.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucAcroDictionaries.Designer.cs">
+      <DependentUpon>ucAcroDictionaries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucAcroSeekerResults.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucAcroSeekerResults.Designer.cs">
+      <DependentUpon>ucAcroSeekerResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucAnalysisResults.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucAnalysisResults.Designer.cs">
+      <DependentUpon>ucAnalysisResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDAHootSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDAHootSearch.Designer.cs">
+      <DependentUpon>ucDAHootSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDeepAnalyticsFilterDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDeepAnalyticsFilterDisplay.Designer.cs">
+      <DependentUpon>ucDeepAnalyticsFilterDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDeepAnalyticsKeywords.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDeepAnalyticsKeywords.Designer.cs">
+      <DependentUpon>ucDeepAnalyticsKeywords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDeepAnalyticsNotes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDeepAnalyticsNotes.Designer.cs">
+      <DependentUpon>ucDeepAnalyticsNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDeepAnalyticsResults.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDeepAnalyticsResults.Designer.cs">
+      <DependentUpon>ucDeepAnalyticsResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDictionaries.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDictionaries.Designer.cs">
+      <DependentUpon>ucDictionaries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDictionarySelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDictionarySelect.Designer.cs">
+      <DependentUpon>ucDictionarySelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDiffSxS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDiffSxS.Designer.cs">
+      <DependentUpon>ucDiffSxS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDocDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDocDetails.Designer.cs">
+      <DependentUpon>ucDocDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDocTypeName.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDocTypeName.Designer.cs">
+      <DependentUpon>ucDocTypeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucExcelTemplates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucExcelTemplates.Designer.cs">
+      <DependentUpon>ucExcelTemplates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucExported.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucExported.Designer.cs">
+      <DependentUpon>ucExported.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucKeywordGroups.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucKeywordGroups.Designer.cs">
+      <DependentUpon>ucKeywordGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucKeywordsSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucKeywordsSelect.Designer.cs">
+      <DependentUpon>ucKeywordsSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucKwDicCon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucKwDicCon.Designer.cs">
+      <DependentUpon>ucKwDicCon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucNotes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucNotes.Designer.cs">
+      <DependentUpon>ucNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucParse_Attributes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucParse_Attributes.Designer.cs">
+      <DependentUpon>ucParse_Attributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucProjectsDocs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucProjectsDocs.Designer.cs">
+      <DependentUpon>ucProjectsDocs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucQCAnalysisResults.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucQCAnalysisResults.Designer.cs">
+      <DependentUpon>ucQCAnalysisResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucQCCharts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucQCCharts.Designer.cs">
+      <DependentUpon>ucQCCharts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucQCIssues.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucQCIssues.Designer.cs">
+      <DependentUpon>ucQCIssues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucQCSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucQCSettings.Designer.cs">
+      <DependentUpon>ucQCSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucRAMModels.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucRAMModels.Designer.cs">
+      <DependentUpon>ucRAMModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResults.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResults.Designer.cs">
+      <DependentUpon>ucResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResultsConceptItemsFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResultsConceptItemsFilter.designer.cs">
+      <DependentUpon>ucResultsConceptItemsFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResultsConcepts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResultsConcepts.designer.cs">
+      <DependentUpon>ucResultsConcepts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResultsDic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResultsDic.designer.cs">
+      <DependentUpon>ucResultsDic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResultsDicItemsFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResultsDicItemsFilter.designer.cs">
+      <DependentUpon>ucResultsDicItemsFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResultsMultiConcepts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResultsMultiConcepts.Designer.cs">
+      <DependentUpon>ucResultsMultiConcepts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResultsMultiDic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResultsMultiDic.cs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ucResultsMultiDic.cs.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ucResultsMultiDic.designer.cs">
+      <DependentUpon>ucResultsMultiDic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResultsNotes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResultsNotes.designer.cs">
+      <DependentUpon>ucResultsNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResults_ExcelPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResults_ExcelPreview.Designer.cs">
+      <DependentUpon>ucResults_ExcelPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResults_Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResults_Home.Designer.cs">
+      <DependentUpon>ucResults_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResults_HTMLPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResults_HTMLPreview.Designer.cs">
+      <DependentUpon>ucResults_HTMLPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResults_RTF_Preview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResults_RTF_Preview.Designer.cs">
+      <DependentUpon>ucResults_RTF_Preview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResults_TxtDocView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResults_TxtDocView.Designer.cs">
+      <DependentUpon>ucResults_TxtDocView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucResults_WordPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucResults_WordPreview.Designer.cs">
+      <DependentUpon>ucResults_WordPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSearch.Designer.cs">
+      <DependentUpon>ucSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSearch_hoot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSearch_hoot.Designer.cs">
+      <DependentUpon>ucSearch_hoot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSettings.Designer.cs">
+      <DependentUpon>ucSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSettings_Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSettings_Home.Designer.cs">
+      <DependentUpon>ucSettings_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucStart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucStart.Designer.cs">
+      <DependentUpon>ucStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucTasks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucTasks.Designer.cs">
+      <DependentUpon>ucTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucTasksSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucTasksSelect.Designer.cs">
+      <DependentUpon>ucTasksSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucTasksSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucTasksSettings.Designer.cs">
+      <DependentUpon>ucTasksSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucWelcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucWelcome.Designer.cs">
+      <DependentUpon>ucWelcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucWelcomeSub.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucWelcomeSub.Designer.cs">
+      <DependentUpon>ucWelcomeSub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCardMgr.cs" />
+    <EmbeddedResource Include="frmCategory.resx">
+      <DependentUpon>frmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCombinemultiSec.resx">
+      <DependentUpon>frmCombinemultiSec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConcepts2Dic.resx">
+      <DependentUpon>frmConcepts2Dic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeepAnalyticsExport.resx">
+      <DependentUpon>frmDeepAnalyticsExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDefLib.resx">
+      <DependentUpon>frmDefLib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDictionary2.resx">
+      <DependentUpon>frmDictionary2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDocumentEdit.resx">
+      <DependentUpon>frmDocumentEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDocuments3.resx">
+      <DependentUpon>frmDocuments3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDocumentView.resx">
+      <DependentUpon>frmDocumentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDownLoad.resx">
+      <DependentUpon>frmDownLoad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditSec.resx">
+      <DependentUpon>frmEditSec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExcelTemp.resx">
+      <DependentUpon>frmExcelTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExport.resx">
+      <DependentUpon>frmExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExported.resx">
+      <DependentUpon>frmExported.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExportSec.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>frmExportSec3.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHootProcessing.resx">
+      <DependentUpon>frmHootProcessing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIgnoreLst.resx">
+      <DependentUpon>frmIgnoreLst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportDic.resx">
+      <DependentUpon>frmImportDic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInputDialog.resx">
+      <DependentUpon>frmInputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKeywords.resx">
+      <DependentUpon>frmKeywords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLastestReleaseInfo.resx">
+      <DependentUpon>frmLastestReleaseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProject.resx">
+      <DependentUpon>frmProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQCSettings.resx">
+      <DependentUpon>frmQCSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRAMModel.resx">
+      <DependentUpon>frmRAMModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReadabilityRef.resx">
+      <DependentUpon>frmReadabilityRef.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplitSec.resx">
+      <DependentUpon>frmSplitSec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSynonymNew.resx">
+      <DependentUpon>frmSynonymNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTacksWorkflowConfig.resx">
+      <DependentUpon>frmTacksWorkflowConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserCard.resx">
+      <DependentUpon>frmUserCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWGConnect.resx">
+      <DependentUpon>frmWGConnect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWGNew.resx">
+      <DependentUpon>frmWGNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ucAcroDictionaries.resx">
+      <DependentUpon>ucAcroDictionaries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucAcroSeekerResults.resx">
+      <DependentUpon>ucAcroSeekerResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucAnalysisResults.resx">
+      <DependentUpon>ucAnalysisResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDAHootSearch.resx">
+      <DependentUpon>ucDAHootSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDeepAnalyticsFilterDisplay.resx">
+      <DependentUpon>ucDeepAnalyticsFilterDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDeepAnalyticsKeywords.resx">
+      <DependentUpon>ucDeepAnalyticsKeywords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDeepAnalyticsNotes.resx">
+      <DependentUpon>ucDeepAnalyticsNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDeepAnalyticsResults.resx">
+      <DependentUpon>ucDeepAnalyticsResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDictionaries.resx">
+      <DependentUpon>ucDictionaries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDictionarySelect.resx">
+      <DependentUpon>ucDictionarySelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDiffSxS.resx">
+      <DependentUpon>ucDiffSxS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDocDetails.resx">
+      <DependentUpon>ucDocDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDocTypeName.resx">
+      <DependentUpon>ucDocTypeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucExcelTemplates.resx">
+      <DependentUpon>ucExcelTemplates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucExported.resx">
+      <DependentUpon>ucExported.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucKeywordGroups.resx">
+      <DependentUpon>ucKeywordGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucKeywordsSelect.resx">
+      <DependentUpon>ucKeywordsSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucKwDicCon.resx">
+      <DependentUpon>ucKwDicCon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucNotes.resx">
+      <DependentUpon>ucNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucParse_Attributes.resx">
+      <DependentUpon>ucParse_Attributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucProjectsDocs.resx">
+      <DependentUpon>ucProjectsDocs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucQCAnalysisResults.resx">
+      <DependentUpon>ucQCAnalysisResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucQCCharts.resx">
+      <DependentUpon>ucQCCharts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucQCIssues.resx">
+      <DependentUpon>ucQCIssues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucQCSettings.resx">
+      <DependentUpon>ucQCSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucRAMModels.resx">
+      <DependentUpon>ucRAMModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResults.resx">
+      <DependentUpon>ucResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResultsConceptItemsFilter.resx">
+      <DependentUpon>ucResultsConceptItemsFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResultsConcepts.resx">
+      <DependentUpon>ucResultsConcepts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResultsDic.resx">
+      <DependentUpon>ucResultsDic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResultsDicItemsFilter.resx">
+      <DependentUpon>ucResultsDicItemsFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResultsMultiConcepts.resx">
+      <DependentUpon>ucResultsMultiConcepts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResultsMultiDic.cs.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ucResultsMultiDic.cs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResultsMultiDic.resx">
+      <DependentUpon>ucResultsMultiDic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResultsNotes.resx">
+      <DependentUpon>ucResultsNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResults_ExcelPreview.resx">
+      <DependentUpon>ucResults_ExcelPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResults_Home.resx">
+      <DependentUpon>ucResults_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResults_HTMLPreview.resx">
+      <DependentUpon>ucResults_HTMLPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResults_RTF_Preview.resx">
+      <DependentUpon>ucResults_RTF_Preview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResults_TxtDocView.resx">
+      <DependentUpon>ucResults_TxtDocView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucResults_WordPreview.resx">
+      <DependentUpon>ucResults_WordPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSearch.resx">
+      <DependentUpon>ucSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSearch_hoot.resx">
+      <DependentUpon>ucSearch_hoot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSettings.resx">
+      <DependentUpon>ucSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSettings_Home.resx">
+      <DependentUpon>ucSettings_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucStart.resx">
+      <DependentUpon>ucStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucTasks.resx">
+      <DependentUpon>ucTasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucTasksSelect.resx">
+      <DependentUpon>ucTasksSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucTasksSettings.resx">
+      <DependentUpon>ucTasksSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucWelcome.resx">
+      <DependentUpon>ucWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucWelcomeSub.resx">
+      <DependentUpon>ucWelcomeSub.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="NuGet.config" />
+    <None Include="packages.config" />
+    <None Include="ProDocAnalyzer.pfx" />
+    <EmbeddedResource Include="Properties\License.lic" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\atebion llc transparent 300 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.people1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.information.circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AcroParser2\AcroParser2.csproj">
+      <Project>{237563cb-01eb-43ae-843f-f235ff2b2796}</Project>
+      <Name>AcroParser2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AcroParser\AcroParser.csproj">
+      <Project>{292aef44-352f-4dd4-9e74-39656db31f15}</Project>
+      <Name>AcroParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atebion.Common\Atebion.Common.csproj">
+      <Project>{46ec7776-5256-4c0f-96f4-8899bc9265e2}</Project>
+      <Name>Atebion.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atebion.ConceptAnalyzer\Atebion.ConceptAnalyzer.csproj">
+      <Project>{ffac2b71-66e2-4a49-b884-d4aca82b8736}</Project>
+      <Name>Atebion.ConceptAnalyzer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atebion.DiffSxS\Atebion.DiffSxS.csproj">
+      <Project>{dc3b9cba-a0c7-47ac-ae3d-0ffaa1d01dd6}</Project>
+      <Name>Atebion.DiffSxS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atebion.Import\Atebion.Import.csproj">
+      <Project>{77800fb1-3e1b-468c-8fa4-3fe52d483572}</Project>
+      <Name>Atebion.Import</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atebion.QC\Atebion.QC.csproj">
+      <Project>{13d1b677-378e-4fd7-bf3d-53da10f02a15}</Project>
+      <Name>Atebion.QC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atebion.Tasks\Atebion.Tasks.csproj">
+      <Project>{ddb44e6c-b780-4853-b3da-9567963d5e8d}</Project>
+      <Name>Atebion.Tasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atebion.WorkGroups\Atebion.WorkGroups.csproj">
+      <Project>{5b87eb71-2190-46d8-af17-84e49a170817}</Project>
+      <Name>Atebion.WorkGroups</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionDeepAnalytics\AtebionDeepAnalytics.csproj">
+      <Project>{490d605b-0322-480d-99de-b1f426b626e6}</Project>
+      <Name>AtebionDeepAnalytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionExpt2Excel\AtebionExpt2Excel\AtebionExpt2Excel.csproj">
+      <Project>{2be2c238-67be-48dd-88f0-e6283d4a68ac}</Project>
+      <Name>AtebionExpt2Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionHTMLGen\AtebionHTMLGen.csproj">
+      <Project>{db7ba9af-18b0-43a6-8655-ac9405755958}</Project>
+      <Name>AtebionHTMLGen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionOLEmail\AtebionOLEmail.vbproj">
+      <Project>{676926cb-5e1a-4e9b-bf12-9aae4c295b64}</Project>
+      <Name>AtebionOLEmail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionParse2\AtebionParse.vbproj">
+      <Project>{00d746b6-3155-4eed-a02d-c529561bec30}</Project>
+      <Name>AtebionParse</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionRTFf2HTMLf\AtebionRTFf2HTMLf.csproj">
+      <Project>{72713163-8630-4128-839a-b2e491d503dc}</Project>
+      <Name>AtebionRTFf2HTMLf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionRTFGen\AtebionRTFGen\AtebionRTFGen.csproj">
+      <Project>{5ccdd497-ab68-4e78-ab66-7a846aa37d1c}</Project>
+      <Name>AtebionRTFGen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionRTF\AtebionRTF.csproj">
+      <Project>{7aeeaa44-6a36-498c-9ab7-c8e758cc6dd4}</Project>
+      <Name>AtebionRTF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AtebionWordOXML\AtebionWordOXML.csproj">
+      <Project>{7cc15d68-a654-4970-a84b-a733308ce6ec}</Project>
+      <Name>AtebionWordOXML</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atebion_Dictionary\Atebion_Dictionary.csproj">
+      <Project>{e3ee68a6-3d8d-4816-b2ea-e582f3840c7d}</Project>
+      <Name>Atebion_Dictionary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CovertDoctoRTF\CovertDoctoRTF\CovertDoctoRTF.csproj">
+      <Project>{6d00b0ca-ff3c-4bb5-bcf0-e8f71a3096e7}</Project>
+      <Name>CovertDoctoRTF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VistaMenuControl\VistaMenuControl.csproj">
+      <Project>{bbcae08c-006f-4979-9717-24532b432450}</Project>
+      <Name>VistaMenuControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="aticon.ico" />
+    <Content Include="IconOnly_Color.ico" />
+    <Content Include="SA_icon.ico" />
+    <Content Include="scion_icon_v2_icon.ico" />
+    <None Include="Resources\puzzle transparent 300.png" />
+    <None Include="Resources\puzzle white 300.png" />
+    <None Include="Resources\puzzle white 300 sm.png" />
+    <None Include="Resources\appbar.people.multiple.png" />
+    <None Include="Resources\appbar.app.plus.png" />
+    <None Include="Resources\appbar.page.corner.cells.png" />
+    <None Include="Resources\appbar.people.checkbox.png" />
+    <None Include="Resources\appbar.arrow.up.png" />
+    <None Include="Resources\appbar.arrow.down.png" />
+    <None Include="Resources\appbar.list.gear.png" />
+    <None Include="Resources\appbar.lightning.png" />
+    <None Include="Resources\appbar.page.question.png" />
+    <None Include="Resources\appbar.settings.png" />
+    <None Include="Resources\appbar.cancel.png" />
+    <None Include="Resources\appbar.book.list.png" />
+    <None Include="Resources\appbar.key1.png" />
+    <None Include="Resources\appbar.office.excel.png" />
+    <None Include="Resources\appbar.book.perspective.png" />
+    <None Include="Resources\appbar.key.png" />
+    <None Include="Resources\appbar.page.multiple.png" />
+    <None Include="Resources\appbar.folder.png" />
+    <None Include="Resources\atebion llc white smoke 300 2.png" />
+    <None Include="Resources\atebion llc snow white 300 2.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

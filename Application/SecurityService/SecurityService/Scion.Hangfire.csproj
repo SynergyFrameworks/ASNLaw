@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <noWarn>1591</noWarn>
+        <ApplicationIcon />
+        <OutputType>Library</OutputType>
+        <IsPackable>True</IsPackable>
+        <StartupObject />
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <NoWarn>1701;1702;1705;1591</NoWarn>
+        <DocumentationFile />
+    </PropertyGroup>
+
+    <ItemGroup>
+
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.7.19" />
+
+        <PackageReference Include="Hangfire.Core" Version="1.7.19" />
+        <PackageReference Include="Hangfire.MemoryStorage" Version="1.7.0" />
+        <PackageReference Include="Hangfire.Redis.StackExchange.StrongName" Version="1.7.0" />
+        <PackageReference Include="Hangfire.SqlServer" Version="1.7.19" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Scion.Infrastructure\Scion.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

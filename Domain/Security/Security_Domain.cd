@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Scion.Business.Security.Model.User">
+    <Position X="2.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUEAAQCAgAIAAgACAYAAAAgAACAIAAAAAAAAAAAg=</HashCode>
+      <FileName>Model\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scion.Business.Security.Domain.Group">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAQEAEAgAAAAgAAAAAQAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Domain\Group.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scion.Business.Security.Domain.Client">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAAAgAAAAAQAAAAAAACAAAAgAAAAAAA=</HashCode>
+      <FileName>Domain\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

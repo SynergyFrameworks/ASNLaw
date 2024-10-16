@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scion.FilesService", "Scion.FilesService.csproj", "{60CC99AA-04E7-4972-BE32-B59FAF735879}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scion.Datalayer", "..\..\Datalayer\Scion.Datalayer\Scion.Datalayer.csproj", "{6A91FFE1-5484-41E1-BB33-E5762FC093A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistance", "Persistance", "{FC7B9ADB-7159-46E4-9FE2-98EEB0613158}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{94BF66F1-4D2D-4798-8067-B48FC72AA098}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scion.Infrastructure", "..\..\Scion.Infrastructure\Scion.Infrastructure.csproj", "{5A4392FF-4FC3-4EC8-940A-7F97C9EEE488}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scion.StorageProvider.Adapters", "..\..\Scion.FileSystem.Adapters\Scion.StorageProvider.Adapters.csproj", "{A760E99F-18BA-4F91-9249-43AFFCD5164D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{37FE5AE7-EFAD-485A-B95A-FDDCDC28198D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scion.Business.Security", "..\..\Scion.Business\Scion.Business.Security\Scion.Business.Security.csproj", "{339E86E0-DDEF-40CF-86AA-75698FAD1CC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60CC99AA-04E7-4972-BE32-B59FAF735879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60CC99AA-04E7-4972-BE32-B59FAF735879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60CC99AA-04E7-4972-BE32-B59FAF735879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60CC99AA-04E7-4972-BE32-B59FAF735879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A91FFE1-5484-41E1-BB33-E5762FC093A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A91FFE1-5484-41E1-BB33-E5762FC093A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A91FFE1-5484-41E1-BB33-E5762FC093A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A91FFE1-5484-41E1-BB33-E5762FC093A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A4392FF-4FC3-4EC8-940A-7F97C9EEE488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A4392FF-4FC3-4EC8-940A-7F97C9EEE488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A4392FF-4FC3-4EC8-940A-7F97C9EEE488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A4392FF-4FC3-4EC8-940A-7F97C9EEE488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A760E99F-18BA-4F91-9249-43AFFCD5164D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A760E99F-18BA-4F91-9249-43AFFCD5164D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A760E99F-18BA-4F91-9249-43AFFCD5164D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A760E99F-18BA-4F91-9249-43AFFCD5164D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{339E86E0-DDEF-40CF-86AA-75698FAD1CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339E86E0-DDEF-40CF-86AA-75698FAD1CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339E86E0-DDEF-40CF-86AA-75698FAD1CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339E86E0-DDEF-40CF-86AA-75698FAD1CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6A91FFE1-5484-41E1-BB33-E5762FC093A3} = {FC7B9ADB-7159-46E4-9FE2-98EEB0613158}
+		{5A4392FF-4FC3-4EC8-940A-7F97C9EEE488} = {94BF66F1-4D2D-4798-8067-B48FC72AA098}
+		{A760E99F-18BA-4F91-9249-43AFFCD5164D} = {94BF66F1-4D2D-4798-8067-B48FC72AA098}
+		{339E86E0-DDEF-40CF-86AA-75698FAD1CC3} = {37FE5AE7-EFAD-485A-B95A-FDDCDC28198D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1C19C31-BC7B-4B0C-80D5-2BB680502E98}
+	EndGlobalSection
+EndGlobal
